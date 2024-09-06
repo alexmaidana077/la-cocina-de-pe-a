@@ -1,0 +1,78 @@
+/* Ajustes generales para los enlaces */
+.nav-link, .dropdown-item {
+    color: white !important; /* Texto blanco */
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+/* Fondo para la barra de navegación (en cualquier dispositivo) */
+.navbar {
+    background-color: #2C3E50 !important; /* Color de fondo gris oscuro */
+}
+.container-fluid a img {
+    width: 300px;
+    margin-left: 2px;
+    cursor: pointer;
+    transition: transform 0.8s;
+    border: none;
+}
+.container-fluid a img:hover {
+    transform: scale(105%);
+    filter: drop-shadow(0px 0px 5px #4c6a88);
+}
+/* Ajustes para móviles */
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: right; /* Alineación del texto a la derecha */
+        padding-top: 50px; /* Ajustamos el espacio superior */
+        padding-right: 20px; /* Ajustamos el espacio a la derecha */
+    }
+    .container-fluid a img {
+        width: 250px;
+        margin-left: -15px;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 20px; /* Separación entre los elementos del menú */
+    }
+
+    /* Menú colapsable que se expande desde la derecha */
+    .navbar-collapse {
+        position: fixed; /* Fijo para ocupar toda la pantalla */
+        top: 0;
+        right: -100%; /* Fuera de la pantalla inicialmente */
+        width: 100%; /* Ancho completo */
+        height: 100%; /* Alto completo */
+        background-color: #2C3E50 !important; /* Fondo gris oscuro */
+        transition: right 0.3s ease; /* Transición rápida */
+        z-index: 999; /* Para estar encima de todo */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Alineación centrada */
+    }
+
+    .navbar-collapse.show {
+        right: 0; /* Mostrar el menú */
+    }
+
+    /* Botón para cerrar el menú */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    /* Animación de cierre */
+    .navbar-collapse.closing {
+        right: -100%; /* Deslizar hacia la derecha */
+        transition: right 0.3s ease; /* Transición rápida */
+    }
+
+    /* Botón de colapso alineado a la derecha */
+    .navbar-toggler {
+        margin-left: auto;
+    }
+}
