@@ -29,7 +29,8 @@ a {
     text-decoration: none;
 }
 
-/*------------------------menu------------------------------------*//* Ajustes generales para los enlaces */
+/*------------------------menu------------------------------------*/
+/* Ajustes generales para los enlaces */
 .nav-link, .dropdown-item {
     color: white !important; /* Texto blanco */
     font-size: 20px;
@@ -38,7 +39,7 @@ a {
 
 /* Fondo para la barra de navegación (en cualquier dispositivo) */
 .navbar {
-    background-color: #2C3E50 !important; /* Color de fondo gris oscuro */
+    background-color: #2C3E50 !important;
 }
 .container-fluid a img {
     width: 300px;
@@ -110,6 +111,7 @@ a {
 
 
 /*-----------------------footer------------------------------------*/
+
 
 footer {
     background-color: #2C3E50;
