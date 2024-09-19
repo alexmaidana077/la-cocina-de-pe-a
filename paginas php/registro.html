@@ -14,7 +14,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <!-- Nombre a la izquierda -->
-                    <a class="navbar-brand" href="#"><img src="../img/logos/10.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="../index.html"><img src="../img/logos/10.png" alt="Logo"></a>
     
                     <!-- Botón colapsable en móviles -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,14 +26,17 @@
                         <!-- Botón para cerrar el menú -->
                         <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/categorias.html">Categorías</a>
+                            <li class="nav-item"></li>
+                                <a class="nav-link" href="../index.html">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a>
+                                <a class="nav-link" href="../pages/categorias.html">Categorías</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/registro.html">Login</a>
+                                <a class="nav-link" href="../pages/nosotros.html">Acerca de Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.html">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -41,17 +44,20 @@
             </nav>
         </header>
     <main>
-        <form action="" method="post" class="conenedor_login">
-            <h1 class="titform">Iniciar Sesión</h1>
-            <label for="nombreuser">Email:</label>
-            <input type="text" name="email" id="email">
+        <form action="" method="post">
+            <h1 style="text-align: center">Crear Cuenta</h1>
+            <label for="nombreuser">Usuario:</label>
+            <input type="text" name="nombreuser" id="NI">
+
+            <label for="nombre">Email:</label>
+            <input type="text" name="email" id="">
 
             <label for="clave">Contraseña:</label>
             <input type="password" name="clave" id="">
 
-            <input type="submit" value="ingresar" name="ingresar">
-            <a class="volver" href="registro.php">¿No tienes cuenta? ¡Haz click Aqu!</a>
-    </form> 
+            <input type="submit" value="registrarse" name="registrar">
+            <a class="volver" href="login.html">¿Ya tenes cuenta?¡Haz click aquí!</a>
+        </form>  
     </main>
     <footer>
         <div class="footerContainer">

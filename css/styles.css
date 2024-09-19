@@ -1,55 +1,32 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
-}
-
-body {
-    background-color: #FFF8E7;
-    font-family: Arial, sans-serif;
-    padding-top: 100px;
-}
-
-main {
-    margin: 30px;
-}
-
-p {
-    margin-bottom: 10px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-a {
-    color: #000000;
-    text-decoration: none;
-}
-
-/*------------------------menu------------------------------------*//* Ajustes generales para los enlaces */
-/* Estilo para el header */
-header {
-    position: fixed; /* Fijo en la parte superior */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #0977e6; /* Color de fondo para el header */
-    color: white;
-    z-index: 1000; /* Asegura que esté por encima del contenido */
-}
+/* Ajustes generales para los enlaces */
 .nav-link, .dropdown-item {
     color: white !important; /* Texto blanco */
     font-size: 20px;
     margin-top: 5px;
+    padding-bottom: 10px; /* Espacio para la línea durante el hover */
+    transition: transform 0.5s, filter 0.5s, border-bottom 0.5s; /* Transición para los cambios */
+    margin-right: 10px;
 }
+
+.nav-link:hover {
+    transform: scale(105%);
+    filter: drop-shadow(0px 0px 5px #a0cfff);
+    transition: 0.5s;
+    padding-bottom: 5px; /* Espacio para la línea */
+    border-bottom: 2px solid white; /* Línea fija debajo del enlace */
+}
+
 
 /* Fondo para la barra de navegación (en cualquier dispositivo) */
 .navbar {
+    position: fixed; /* Fijo en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima del contenido */
     background-color: #2C3E50 !important; /* Color de fondo gris oscuro */
 }
+
 .container-fluid a img {
     width: 300px;
     margin-left: 2px;
@@ -57,18 +34,19 @@ header {
     transition: transform 0.8s;
     border: none;
 }
+
 .container-fluid a img:hover {
     transform: scale(105%);
     filter: drop-shadow(0px 0px 5px #4c6a88);
-}
-/* Ocultar el botón de cierre en pantallas grandes */
-.close-btn {
-    display: none; /* Ocultar en pantallas grandes */
 }
 
 /* Ajustes para móviles */
 @media (max-width: 767px) {
     .navbar-nav {
+        padding-bottom: 2px; /* Espacio para la línea durante el hover */
+        top: 0;
+        left: 0;
+        width: 30%;
         text-align: right; /* Alineación del texto a la derecha */
         padding-top: 50px; /* Ajustamos el espacio superior */
         padding-right: 20px; /* Ajustamos el espacio a la derecha */
@@ -76,6 +54,7 @@ header {
     .container-fluid a img {
         width: 250px;
         margin-left: -15px;
+      
     }
 
     .navbar-nav .nav-item {
@@ -84,70 +63,150 @@ header {
 
     /* Menú colapsable que se expande desde la derecha */
     .navbar-collapse {
+        z-index: 200;
         position: fixed; /* Fijo para ocupar toda la pantalla */
         top: 0;
         right: -100%; /* Fuera de la pantalla inicialmente */
         width: 100%; /* Ancho completo */
         height: 100%; /* Alto completo */
-        background-color: #2C3E50 !important; /* Fondo gris oscuro */
-        transition: right 0.3s ease; /* Transición rápida */
-        z-index: 999; /* Para estar encima de todo */
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Alineación centrada */
+        background-color: #2C3E50; /* Mismo color de fondo que la barra de navegación */
+        transition: right 0.3s ease; /* Transición suave */
     }
-
     .navbar-collapse.show {
         right: 0; /* Mostrar el menú */
     }
-
-    /* Botón para cerrar el menú */
     .close-btn {
         position: absolute;
         top: 10px;
-        right: 20px;
+        right: 10px;
         font-size: 30px;
         color: white;
         cursor: pointer;
     }
-    
-    /* Animación de cierre */
-    .navbar-collapse.closing {
-        right: -100%; /* Deslizar hacia la derecha */
-        transition: right 0.3s ease; /* Transición rápida */
+}
+
+/* Estilos para el carrusel principal */
+#carouselExample {
+    margin-top: 100%; /* Espacio superior */
+}
+
+.carousel-inner img {
+    border-radius: 5px;
+    width: 100%; /* Ajuste automático del ancho */
+    height: auto; /* Mantener proporciones de la imagen */
+}
+
+.container {
+    background-color: #2C3E50;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 120px auto; /* Centrar el carrusel */
+    max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+.tit {
+    text-align: center;
+    color: rgb(38, 38, 41);
+    margin-top: -80px;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .carousel-inner img {
+        width: 100%; /* Asegura que la imagen no se desborde en pantallas pequeñas */
+    }
+    .container {
+        margin: 96px auto; /* Centrar el carrusel */
+    }
+    .tit{
+        margin-top: -80px;
+    }
+}
+
+/* -----> Configuración del Sector Visualizar de recetas <----- */
+.contenedor_visualizar{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   margin: auto;
+   width: 80%;
+}
+.card{
+    margin-top: 50px;
+    max-width: 260px;
+}
+
+.card-title{
+    font-size: 38px;
+}
+.card-text{
+    font-size: 20px;
+}
+.btn-primary{
+    margin: auto;
+}
+
+
+
+@media (max-width: 768px) {
+    .contenedor_visualizar{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: auto;
+        width: 90%;
     }
 
-    /* Botón de colapso alineado a la derecha */
-    .navbar-toggler {
-        margin-left: auto;
+    .card{
+        margin-top: 20px;
+        max-width: 150px;
+        max-height: 400px;
+    }
+    .card-title{
+        font-size: 15px;
+    }
+    .card-text{
+        font-size: 11px;
+    }
+    .contenedor_visualizar a{
+        width: 120px auto;
+        height: 30px;
+        font-size: 10px;
     }
 }
 
 
-/*-----------------------footer------------------------------------*/
-
+/* ----footenr */
 footer {
+    margin-top: 50px;
     background-color: #2C3E50;
     color: #FFF8E7;
+    padding: 10px 0;
 }
 
 .footerContainer {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 10px;
 }
 
 .redes {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 10px;
+}
+
+.redes a {
+    margin: 5px;
 }
 
 .redes a img {
     width: 50px;
-    margin: 0px 100px;
     transition: 0.2s;
+    margin: 0px 90px auto;
 }
-
 .redes a img:hover {
     transform: scale(115%);
     filter: drop-shadow(0px 0px 5px #a0cfff);
@@ -156,152 +215,314 @@ footer {
 
 
 footer p {
-    margin: 20px;
+    margin: 40px 0px auto;
     text-align: center;
 }
 
-/*-----------------------------slider---------------------------------------------*/
+/* Media Queries para pantallas pequeñas */
 
-.sliders-container {
-    width: 80%;
-    margin: auto;
-
+@media (max-width: 768px) {
+    .redes a img {
+        width: 40px; /* Reduce el tamaño de los íconos en pantallas más pequeñas */
+    }
 }
 
-.slider-wrapper {
-    margin-top: 30px;
-    margin-bottom: 40px;
-    /* Espacio entre sliders */
-    background-color: #a8e6cf7a;
-    padding: 10px;
+@media (max-width: 576px) {
+    .redes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: auto;
+    }
+    .redes a img {
+        margin: 0px 19px auto; /* Ajusta el margen para que los íconos no estén tan separados en pantallas muy pequeñas */
+    }
+}
+
+/* -------------------------->receta */
+.contenedor_receta {
+    margin-top: 290px;
+    background-color: #2C3E50;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px black;
+    margin: 130px auto;
+    width: 95%;
+    height: 500px;
+    display: flex; /* Utilizamos flexbox */
+    justify-content: space-between; /* Coloca la imagen a la derecha */
+    align-items: center; /* Centra el contenido verticalmente */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño del div */
 }
 
-.slider-wrapper h2 {
-    margin-bottom: 20px;
+.contenedor_receta h1, .contenedor_receta h2 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: left; /* Alinea el texto a la izquierda */
 }
 
-.slider {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-
-}
-
-.slider-items {
+.texto {
     display: flex;
-    transition: transform 0.5s ease;
+    flex-direction: column; /* Alinea los textos uno debajo del otro */
+    padding: 100px;
+    margin-right: auto; /* Mantiene el texto alineado a la izquierda */
 }
 
-.slider-item {
-    flex: 0 0 25%;
-    /* Ajusta según cuántas tarjetas quieres ver a la vez */
-    box-sizing: border-box;
-    padding: 10px;
+.contenedor_receta img {
+    height: 100%; /* La imagen toma todo el alto del contenedor */
+    border-top-right-radius: 10px; /* Mantiene el borde redondeado arriba a la derecha */
+    border-bottom-right-radius: 10px; /* Mantiene el borde redondeado abajo a la derecha */
+    object-fit: cover; /* Ajusta la imagen al contenedor sin distorsión */
 }
 
-.image-container {
-    position: relative;
-    width: 230px;
-    height: 250px;
-    /* Ajusta según el tamaño deseado de la tarjeta */
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #ddd;
-    /* Fondo en caso de que la imagen no cargue */
+/* ---------> responsive de la Pagina Recetas <--*/
+/* ---------> pantallas pequeñas <--------------- */
+@media (max-width: 768px) {
+    .contenedor_receta {
+        flex-direction:column-reverse; /* Coloca la imagen arriba y el texto abajo */
+        align-items: center; /* Alinea el contenido al centro */
+        height: auto; /* Permite que el contenedor crezca según el contenido */
+    }
+
+    .contenedor_receta img {
+        width: 100%; /* La imagen toma todo el ancho del contenedor */
+        height: auto; /* Ajusta la altura automáticamente */
+        border-radius: 10px 10px 0 0; /* Borde redondeado solo en la parte superior */
+    }
+    .contenedor_receta h1, .contenedor_receta h2 {
+        width: 300px;
+        margin: 5px -60px auto;
+    }    
 }
 
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Ajusta la imagen para llenar el contenedor sin distorsionar */
-    border-radius: 8px;
+/* ------->info de ingredientes */
+/*--------------> div Contendor_Preparacion */
+.Contendor_Preparacion{
+    margin: -980px 430px auto;
+    width: 65%;
+    height: auto; /* Ajusta la altura según el contenido */
+    display: flex;
+    flex-direction: column; /* Alinea cada item en una columna */
+    gap: 20px; /* Espacio entre cada línea de imagen y texto */
+    padding: 20px;
+    margin-bottom: 450px;
 }
-
-.image-container h3 {
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 5px;
+.paso_de_preparacion{
+    margin-top: -10px;
+    font-size: 20px;
 }
-
-.prev,
-.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
+.contenedor_ingredientes{
+    border: 5px solid #2C3E50;
+    border-radius: 10px;
+    margin: -110px 35px auto;
+    width: 28%;
+    height: auto; /* Ajusta la altura según el contenido */
+    display: flex;
+    flex-direction: column; /* Alinea cada item en una columna */
+    gap: 20px; /* Espacio entre cada línea de imagen y texto */
+    padding: 20px;
 }
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/*-------------------------recetas-------------------------------------------------------------*/
-
-.receta h2 {
-    text-align: center;
-    margin-bottom: 20px
+.contenedor_ingredientes li{
+    font-size: 20px;
 }
 
 .ingredientes{
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    margin-top: -20px;
+}
+@media (max-width: 768px) {
+    .contenedor_ingredientes{
+        margin: -110px 15px auto;
+        width: 94%;
+        gap: 20px; /* Espacio entre cada línea de imagen y texto */
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 768px){
+    .Contendor_Preparacion{
+        margin: 5px 1px auto;
+        width: 95%;
+    }
+}
+
+/* ------>Pagina de Nosotros */
+.presentacion{
+    margin: 110px auto;
+    width: 95%;
+    height: auto; /* Ajusta la altura según el contenido */
     display: flex;
-    justify-content: space-between;
-    margin: 10px;
+    flex-direction: column; /* Alinea cada item en una columna */
+    gap: 10px; /* Espacio entre cada línea de texto */
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.presentacion p{
+    font-size: 20px;
+}
+.presentacion h1{
+   text-align: center;
+}
+
+.div_nosotros{
+    display: flex; /* Utilizamos flexbox */
+    justify-content: space-between; /* Coloca la imagen a la derecha */
+    align-items: center; /* Centra el contenido verticalmente */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño del div */
+    padding: 20px;
+    width: 90%;
+    background-color: #a8e6cf7a;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px black;
+    transition: 0.8s;
+    margin: 50px auto;
+    height: 500px;
+    transition: 0.8s;
+}
+.div_nosotros:hover{
+    transform: scale(103%);
+    cursor: default;
+    box-shadow: 0px 0px 10px #2C3E50;
+    transition: 0.8s;
+}
+.info_nosotros{
+    width: 55%;
     text-align: left;
-    display: flex;
+} 
+.info_nosotros .info a {
+    text-decoration: none; /* Esto elimina la línea de subrayado en los enlaces */
 }
-
-.ingredientes h2{
-    text-align: left;
+.info_nosotros .insta{
+color: #192938;
+text-decoration: none;
+font-size: 20px;
+text-align: center;
 }
-
-.imagen{
-    display: flex;
+.info_nosotros .insta:hover{
+    transform: scale(103%);
+    cursor: default;
+    transition: 0.8s;
+    color: #007ff7;
+    font-size: 25px;
 }
-
-.receta img{
+.info_nosotros .insta img{
+width: 50px;
+}
+.div_nosotros .foto{
     width: 500px;
-    margin: auto;
+    border-radius: 60%;
+    height: 100%; /* La imagen toma todo el alto del contenedor */
+    object-fit: cover; /* Ajusta la imagen al contenedor sin distorsión */
+}
+
+.div_nosotros .foto:hover{
+    transform: scale(103%);
+    cursor: default;
+    box-shadow: 0px 0px 10px #192938;
+    transition: 0.8s;
+}
+
+/* -------- Responsive para pantallas pequeñas -------- */
+@media (max-width: 768px) {
+    .div_nosotros {
+        flex-direction: column-reverse; /* Cambia el orden: la imagen queda arriba */
+        height: auto; /* Ajusta la altura automáticamente */
+        padding: 10px; /* Reduce el padding para dispositivos móviles */
+    }
+
+    .info_nosotros {
+        width: 100%; /* Toma el 100% del ancho */
+        text-align: center; /* Centra el texto */
+    }
+
+    .div_nosotros .foto {
+        width: 80%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+        height: auto; /* Ajusta la altura automáticamente */
+        margin: 0 auto; /* Centra la imagen horizontalmente */
+        border-radius: 45%; /* Mantiene la forma circular de la imagen */
+    }
+
+    .presentacion p {
+        font-size: 18px; /* Reduce ligeramente el tamaño del texto */
+    }
+
+    .presentacion h1 {
+        font-size: 24px; /* Ajusta el tamaño del título en pantallas más pequeñas */
+    }
+}
+/* parte mati */
+
+.info_nosotros2{
+    width: 55%;
+    text-align: right;
+} 
+.info_nosotros2 .info a {
+    text-decoration: none; /* Esto elimina la línea de subrayado en los enlaces */
+}
+.info_nosotros2 .insta2{
+color: #192938;
+text-decoration: none;
+font-size: 20px;
+text-align: center;
+}
+.info_nosotros2 .insta2:hover{
+    transform: scale(103%);
+    cursor: default;
+    transition: 0.8s;
+    color: #007ff7;
+    font-size: 25px;
+}
+.info_nosotros2 .insta2 img{
+width: 50px;
+}
+/* -------- Responsive para pantallas pequeñas -------- */
+@media (max-width: 768px) {
+    .div_nosotros2 {
+        flex-direction: column-reverse;
+        height: auto; /* Ajusta la altura automáticamente */
+        padding: 10px; /* Reduce el padding para dispositivos móviles */
+    }
+
+    .info_nosotros2 {
+        width: 100%; /* Toma el 100% del ancho */
+        text-align: center; /* Centra el texto */
+    }
 }
 
 /*------------------categorias-------------------------------*/
+/* Estilos generales para contenedor y grupos de tarjetas */
+.contenedor_categoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre grupos de tarjetas */
+    margin: 50px auto;
+    box-sizing: border-box;
+}
 
 .grupo-tarjetas {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px; /* Espacio entre tarjetas */
     min-height: 50vh;
 }
 
 /* Estilo de cada tarjeta individual */
+
 .tarjeta {
-    margin: 20px;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 5px;
     background-size: cover;
-    box-shadow: 15px 10px 9px rgb(156, 156, 156);
+    background-position: center;
+    box-shadow: 0 4px 8px #202d3a;
     overflow: hidden;
-    transition: 0.8s;
+    position: relative;
+    transition: transform 0.5s ease;
+    margin: auto; /* Centro horizontalmente dentro del grupo */
+}
+
+.tarjeta:hover {
+    transform: scale(108%);
 }
 
 /* Contenido dentro de las tarjetas */
@@ -312,270 +533,119 @@ footer p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #a8e6cfbe;
+    background: #2c3e5071; /* Fondo semitransparente */
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
 .detalles h2 {
-    color: rgb(255, 255, 255);
+    color: white;
     margin: 20px 0;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .detalles a {
     color: white;
-    background-color: #d69d98;
+    background-color: #2C3E50;
     padding: 10px;
     text-decoration: none;
     border-radius: 20px;
-    filter: drop-shadow(0px 0px 5px rgb(255, 255, 255));
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
     transition: transform 0.5s ease;
 }
 
 .detalles a:hover {
-    transform: scale(112%);
-    background-color: #F5B7B1;
+    transform: scale(1.12);
+    background-color: #0c3258;
 }
 
-.tarjeta:hover {
-    transform: translateY(-30px);
-    transition: 0.5s;
-}
-
-/* Cambia la opacidad del contenido al hacer hover en la tarjeta */
 .tarjeta:hover .detalles {
     opacity: 1;
 }
-
-
-/*---------------categorias-ensalada-vegana-etc-----------------------*/
-
-/* Contenedor de las tarjetas */
-.tarjetas-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+@media (max-width: 768px) {
+    .grupo-tarjetas {
+    gap: 10px; /* Espacio entre tarjetas */
+    min-height: 50vh;
+    }
+    .tarjeta {
+        width: 160px;
+        height: 160px;
+    }
+    .detalles h2 {
+        margin: 10px 0;
+        font-size: 20px;
+        text-align: center;
+    }
 }
 
-/* Estilo individual de las tarjetas en el contenedor */
-.tarjeta {
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.5s ease;
-}
+/* -------->diseño formularios<------ */
 
-.tarjeta:hover {
-    transform: scale(110%);
-}
-
-.tarjeta img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-/* Estilo del h3 dentro de las tarjetas */
-.tarjeta h3 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 10px;
-    margin: 0;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 0 0 10px 10px;
-    opacity: 1; /* Inicialmente oculto */
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* Estilo del párrafo dentro de las tarjetas */
-.tarjeta p {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 10px;
-    margin: 0;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 0 0 10px 10px;
-    opacity: 0; /* Inicialmente oculto */
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* Al hacer hover, el h3 y el p aparecen suavemente */
-.tarjeta:hover h3,
-.tarjeta:hover p {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.tarjeta:hover h3 {
-    top: 0;
-}
-
-/*---------------Nosotros-----------------------------*/
-
-.nosotros {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin: auto;
-    margin-top: 50px;
-    width: 90%;
-    background-color: #a8e6cf7a;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px black;
-    transition: 0.8s;
-}
-
-.nosotros:hover {
-    transform: scale(103%);
-    cursor: default;
-    box-shadow: 0px 0px 10px #2C3E50;
-    transition: 0.8s;
-}
-
-.nosotros img {
-    width: 300px;
-    margin-right: 10px;
-    position: relative;
-    border-radius: 60%;
-}
-
-.nosotros h1{
-    margin-bottom: 0px;
-}
-
-.nosotros h5{
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-}
-
-.insta {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-
-
-.insta img {
-    width: 30px;
-    margin-right: 10px;
-}
-
-.insta span {
-    font-size: 16px;
-    color: #000;
-    font-weight: bold;
-    line-height: 30px;
-}
-
-.nosotros:hover .insta {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-/*---------------------contacto----------------------*/
 form {
-    /* ---------> auto: centado derecha e izquierda */
-    /* 50px --- arriba y abajo */
-    margin: 50px auto;
-    width: 600px;
-    height: 700px;
-    background: #2C3E50;
-    border-radius: 20px;
-    box-shadow: 2px 2px 30px whitesmoke;
+    background-color: #2C3E50;
+    padding: 15px;
+    border-radius: 5px;
+    width: 360px;
+    margin: 150px auto;
+    color: white;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(-1px 1px 5px rgb(255, 255, 255));
 }
-.nose{
-    display: flex;
-}
-
-form img {
-    width: 300px;
-    margin: auto
-}
-
-.contacto  {
-    padding: 25px;
-    margin-left: 25px;
-
-}
-
-.contacto h1  {
-    color: whitesmoke;
-    font-size: 50px;
+.titform{
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 10px;
 }
 
-.contacto label {
-    font-size: 25px;
-    color: whitesmoke;
+label {
+    display: block;
     margin-bottom: 5px;
+    text-align: left;
+    color: white;
 }
 
-.contacto input{
-    width: 98%;
-    height: 35px;
-    border-radius: 8px;
-    margin: 8px 0px;
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    
 }
 
-.contacto textarea {
-    width: 98%;
-    height: 120px;
-    border-radius: 8px;
-    margin: 8px 0px;
-} 
-
-.btn{
-    margin-top: 5px;
-    background: #a8e6cf7a;
-    color: whitesmoke;
-    font-size: 20px;
-    transition: 0.3s;
-}
-
-.btn:hover{
-    background-color: #8cfad27a;
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
     cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b9ffdd;
+}
+
+.volver {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.volver:hover {
+    color: rgb(255, 255, 255);
+    transform: scale(103%);
     transition: 0.5s;
 }
 
-.video{
-    display: flex;
-    justify-content: center;
-}
-
-video{
-    width: 200px;
-    box-shadow: 10px 10px 10px #000;
-    margin: auto;
+.area{
+    height: 100px;
+    width: 330px;
+    border-radius: 8px;
 }

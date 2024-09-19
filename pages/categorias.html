@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="" />
+    <!-- Vincular Bootstrap CSS -->
+    <link rel="shortcut icon" href="../img/logos/1 copy.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <title>La Cocina De Peña</title>
-
+    <title>La cocina de Peña Categoria</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
-
-<!--{lato, monse, nunito, popins} #-->
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <!-- Nombre a la izquierda -->
                 <a class="navbar-brand" href="../index.html"><img src="../img/logos/10.png" alt="Logo"></a>
-
                 <!-- Botón colapsable en móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,57 +29,66 @@
                             <a class="nav-link" href="../index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/categorias.html">Categorías</a>
+                            <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/contacto.html">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/login.html">Login</a>
+                            <a class="nav-link" href="#">Login</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
     <main>
-     
-        <div class="grupo-tarjetas">
-            <div class="tarjeta" style="background-image:url(../img/comidas/ensaladas/ensalada-cesar.webp) ;">
-                <div class="detalles">
-                    <h2>ENSALADAS</h2>
-                    <a href="ensaladas.html">Ver todos</a>
+        <hr style="margin-top: 90px;">
+        <h1 class="tit" style="margin-top: 40px;">¡Deléitate con Nuestras Categorias!</h1>
+    <!-- ------categoria: ------------>
+        <div class="contenedor_categoria">
+            <div class="grupo-tarjetas">
+               
+                <div class="tarjeta" style="background-image:url(../img/comidas/empanada.jpg);">
+                    <div class="detalles">
+                        <h2>EMPANADAS</h2>
+                        <a href="">Ver todos</a>
+                    </div>
+                </div>
+                <div class="tarjeta" style="background-image:url(../img/comidas/pasta.jpg);">
+                    <div class="detalles">
+                        <h2>PASTAS</h2>
+                        <a href="">Ver todos</a>
+                    </div>
+                </div>
+                <div class="tarjeta" style="background-image:url(../img/comidas/guiso.jpg);">
+                    <div class="detalles">
+                        <h2>GUISOS Y SOPAS</h2>
+                        <a href="">Ver todos</a>
+                    </div>
                 </div>
             </div>
-            <div class="tarjeta" style="background-image:url(../img/comidas/ensaladas/ensalada-completa.webp);">
-                <div class="detalles">
-                    <h2>Vegana</h2>
-                    <a href="ensaladas.html">Ver todos</a>
+            <div class="grupo-tarjetas">
+                <div class="tarjeta" style="background-image:url(../img/comidas/asado.jpg) ;">
+                    <div class="detalles">
+                        <h2>ASADOS Y PARRILLAS</h2>
+                        <a href="">Ver todos</a>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <br>
-        <div class="grupo-tarjetas">
-            <div class="tarjeta" style="background-image:url(../img/comidas/ensaladas/ensalada-palta-.webp);">
-                <div class="detalles">
-                    <h2>Veggetariana</h2>
-                    <a href="ensaladas.html">Ver todos</a>
+                <div class="tarjeta" style="background-image:url(../img/comidas/milanesa.jpg);">
+                    <div class="detalles">
+                        <h2>MILANESAS</h2>
+                        <a href="">Ver todos</a>
+                    </div>
                 </div>
-            </div>
-            <div class="tarjeta" style="background-image:url(../img/comidas/ensaladas/ensalada-de-repollo.webp);">
-                <div class="detalles">
-                    <h2>Sin gluten</h2>
-                    <a href="ensaladas.html">Ver todos</a>
+                
+                <div class="tarjeta" style="background-image:url(../img/comidas/pizza.jpg);">
+                    <div class="detalles">
+                        <h2>PIZZAS Y FAINÁ</h2>
+                        <a href="">Ver todos</a>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </main>
-
-
     <footer>
         <div class="footerContainer">
             <div class="redes">
@@ -98,8 +100,7 @@
             <p>Copyright &copy;2024; Diseñado por: La Triple M</p>
         </div>
     </footer>
-    <script src="js/menu.js"></script>
+    <!-- Vincular Bootstrap JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
 </html>

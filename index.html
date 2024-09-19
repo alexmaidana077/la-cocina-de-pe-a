@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="" />
+    <title>La cocina de peña</title>
+    <link rel="shortcut icon" href="img/logos/1 copy.png" type="image/x-icon">
+    <!-- Vincular Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <title>La Cocina De Peña</title>
-
+    <!-- Tu CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
-<!--{lato, monse, nunito, popins} #-->
-
 <body>
-    
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -34,185 +28,142 @@
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="pages/categorias.html">Categorías</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/contacto.html">Contacto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/login.html">Login</a>
+                            <a class="nav-link" href="paginas php/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="paginas php/registro.html">Iniciar Seción</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <main>
-        <div class="sliders-container">
-            <div class="slider-wrapper">
-                <h2>Ensaladas:</h2>
-                <div class="slider" id="slider1">
-                    <div class="slider-items">
-                        <!-- Tarjetas del primer slider -->
-                        <a href="pages/ensalada.html">
-                            <div class="slider-item">
-                                <div class="image-container">
-                                    <img src="img/comidas/ensaladas/tomatitos_cherry_lupines.webp" alt="Receta 1">
-                                    <h3>Ensalada de tomatitos cherry y lupines</h3>
-                                </div>
-                            </div>
-                        </a>
-
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/lechuga_atún.webp" alt="Receta 2">
-                                <h3>Ensalada de lechuga y atún</h3>
-                            </div>
+        <div class="container">
+            <div class="carousel-container">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/carusel/1.png" class="d-block w-100" alt="...">
                         </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-completa.webp" alt="Receta 3">
-                                <h3>Ensalada completa rápida y sencilla.</h3>
-                            </div>
+                        <div class="carousel-item">
+                            <img src="img/carusel/2.png" class="d-block w-100" alt="...">
                         </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-de-repollo.webp" alt="Receta 4">
-                                <h3>Ensalada de repollo sencilla</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-palta-.webp" alt="Receta 3">
-                                <h3>Sencilla ensalada de palta</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-vegana.webp" alt="Receta 4">
-                                <h3>Ensalada vegana rápida y sencilla</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-cesar.webp" alt="Receta 3">
-                                <h3>Ensalada César sencilla sin anchoa</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-fresca-y-sencilla.webp" alt="Receta 4">
-                                <h3>Ensalada fresca y sencilla de vacaciones</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/comidas/ensaladas/ensalada-aguacate-salmon-bacalao-ahumados.webp"
-                                    alt="Receta 3">
-                                <h3>Ensalada sencilla de aguacate, salmón y bacalao ahumados</h3>
-                            </div>
+                        <div class="carousel-item">
+                            <img src="img/carusel/3.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
-                    <button class="prev" data-slider="slider1">&#10094;</button>
-                    <button class="next" data-slider="slider1">&#10095;</button>
-                </div>
-            </div>
-
-            <div class="slider-wrapper">
-                <h2>Slider 2</h2>
-                <div class="slider" id="slider2">
-                    <div class="slider-items">
-                        <!-- Tarjetas del segundo slider -->
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 3">
-                                <h3>Receta 3</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 4">
-                                <h3>Receta 4</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 3">
-                                <h3>Receta 3</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 4">
-                                <h3>Receta 4</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 3">
-                                <h3>Receta 3</h3>
-                            </div>
-                        </div>
-                        <div class="slider-item">
-                            <div class="image-container">
-                                <img src="img/logos/1.png" alt="Receta 4">
-                                <h3>Receta 4</h3>
-                            </div>
-                        </div>
-
-                        <!-- Más tarjetas -->
-                    </div>
-                    <button class="prev" data-slider="slider2">&#10094;</button>
-                    <button class="next" data-slider="slider2">&#10095;</button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguente</span>
+                    </button>
                 </div>
             </div>
         </div>
+        <h1 class="tit">¡Deléitate con Nuestras Mejores Recetas!</h1>
+        <!-- ------cartas: ------------>
+    <div class="contenedor_visualizar">
+        <div class="card">
+            <img src="img/comidas/hambur.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">hamburguesa</h5>
+              <p class="card-text">Una jugosa carne, cubierta con queso cheddar derretido, entre dos suaves panes tostados. Sencilla pero deliciosa.
+            </p>
+              <a href="pages/receta.html" class="btn btn-primary">Ver Receta</a>
+            </div>
+          </div>
+          <div class="card">
+            <img src="img/comidas/polenta.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Polenta</h5>
+              <p class="card-text">Una cremosa polenta con tuco rojo casero. La polenta suave contrasta con la salsa de tomate especiada y aromática.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
+            </div>
+          </div>
+          <div class="card">
+            <img src="img/comidas/sorrentinos.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Sorrentinos</h5>
+              <p class="card-text">Sorrentinos rellenos, cubiertos de tuco rojo casero. Pasta y salsa en armonía.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
+            </div>
+          </div>
 
-        <div class="grupo-tarjetas">
-            <div class="tarjeta" style="background-image:url(img/comidas/ensaladas/ensalada-cesar.webp);">
-                <div class="detalles">
-                    <h2>ENSALADAS</h2>
-                    <a href="pages/ensaladas.html">Ver todos</a>
-                </div>
+          <div class="card">
+            <img src="img/comidas/tortilla_papa.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Tortilla de Papa</h5>
+              <p class="card-text">Tortilla dorada de papas tiernas, ligada con huevos. Crujiente por fuera, suave por dentro.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
             </div>
-            <div class="tarjeta" style="background-image:url(img/comidas/ensaladas/ensalada-completa.webp);">
-                <div class="detalles">
-                    <h2>Vegana</h2>
-                    <a href="pages/ensaladas.html">Ver todos</a>
-                </div>
+          </div>
+          <div class="card">
+            <img src="img/comidas/torta_jamoyqueso.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Tarta de Jamon y Queso</h5>
+              <p class="card-text">Masa crujiente rellena de jamón y queso fundido. Salado y reconfortante.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
             </div>
-            <div class="tarjeta" style="background-image:url(img/comidas/ensaladas/ensalada-completa.webp);">
-                <div class="detalles">
-                    <h2>Vegana</h2>
-                    <a href="pages/ensaladas.html">Ver todos</a>
-                </div>
+          </div>
+          <div class="card">
+            <img src="img/comidas/pasteldepapa.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Pastel De Papa</h5>
+              <p class="card-text">Capas de puré y carne picada, gratinado al horno. Clásico reconfortante.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
             </div>
-        </div>
-        
-        
+          </div>
+          <div class="card">
+            <img src="img/comidas/napo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Napolitana</h5>
+              <p class="card-text">Milanesa cubierta de tomate, jamón y queso derretido. Crujiente y sabrosa.</p>
+              <a href="receta/receta.html" class="btn btn-primary">Ver Receta</a>
+            </div>
+          </div>
+          <div class="card">
+            <img src="img/comidas/locro.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Locro</h5>
+              <p class="card-text">Guiso espeso de maíz, carnes y legumbres. Tradicional y contundente.</p>
+              <a href="#" class="btn btn-primary">Ver Receta</a>
+            </div>
+          </div>     
+</div>
+    </main>
 
     <footer>
         <div class="footerContainer">
             <div class="redes">
-                <a href=""><img src="img/iconos/whatsapp-f.png" alt=""></a>
-                <a href=""><img src="img/iconos/instagram-f.png" alt=""></a>
                 <a href=""><img src="img/iconos/facebook-f.png" alt=""></a>
+                <a href=""><img src="img/iconos/instagram-f.png" alt=""></a>
+                <a href=""><img src="img/iconos/whatsapp-f.png" alt=""></a>
                 <a href=""><img src="img/iconos/x-f.png" alt=""></a>
             </div>
+        
             <p>Copyright &copy;2024; Diseñado por: La Triple M</p>
+        
         </div>
 
     </footer>
-    <script src="js/slider.js"></script>
+
     <!-- Vincular Bootstrap JS y Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
 </html>
