@@ -3,12 +3,12 @@
 session_start();
 
 // Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = ""; 
-$dbname = "Cocina";
+$servidor = "localhost";
+$usuario = "root";
+$contra = ""; 
+$dbNombre = "Cocina";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servidor, $usuario, $contra, $dbNombre);
 
 // Verificar la conexión
 if ($conn->connect_error) {
