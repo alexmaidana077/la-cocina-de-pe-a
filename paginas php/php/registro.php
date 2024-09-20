@@ -4,11 +4,11 @@ session_start();
 
 // Conexión a la base de datos
 $servidor = "localhost";
-$usuario = "root";
-$contra = ""; 
-$dbNombre = "Cocina";
+$Usuario = "root";
+$Contra = ""; 
+$DbNombre = "Cocina";
 
-$conn = new mysqli($servidor, $usuario, $contra, $dbNombre);
+$conn = new mysqli($servidor, $Usuario, $Contra, $DbNombre);
 
 // Verificar la conexión
 if ($conn->connect_error) {
