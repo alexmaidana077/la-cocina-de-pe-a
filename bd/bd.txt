@@ -1,0 +1,7 @@
+//creacion del usuario
+
+CREATE TABLE usuario (
+    email VARCHAR (255) NOT NULL PRIMARY KEY,
+    contraseña VARCHAR (200) NOT NULL,
+    usuario VARCHAR (150)
+);
