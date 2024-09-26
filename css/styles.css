@@ -135,7 +135,9 @@
     margin-top: 50px;
     max-width: 260px;
 }
-
+.card img{
+    height:270px;
+}
 .card-title{
     font-size: 38px;
 }
@@ -154,7 +156,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         margin: auto;
-        width: 90%;
+        width: 85%;
     }
 
     .card{
@@ -162,11 +164,14 @@
         max-width: 150px;
         max-height: 400px;
     }
+    .card img{
+        height:170px;
+    }
     .card-title{
         font-size: 15px;
     }
     .card-text{
-        font-size: 11px;
+        font-size: 11.5px;
     }
     .contenedor_visualizar a{
         width: 120px auto;
