@@ -6,7 +6,7 @@ session_start();
 $servidor = "localhost";
 $usuario = "root";
 $contra = "";
-$DbNombre = "Cocina";
+$DbNombre = "cocina";
 
 $conn = new mysqli ($servidor, $usuario, $contra, $DbNombre);
 
@@ -17,15 +17,15 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $gmail = $_POST['gmail'];
+    $email = $_POST['email'];
     $contraseña = $_POST['contraseña'];
 
     // Verificar que los campos no estén vacíos
-    if (!empty($gmail) && !empty($contraseña)){
+    if (!empty($email) && !empty($contraseña)){
           // Preparar la consulta para verificar el usuario
-          $sql = "SELECT contraseña FROM usuarios WHERE gmail = ?";
+          $sql = "SELECT contraseña FROM usuario WHERE email = ?";
           $stmt = $conn->prepare($sql);
-          $stmt->bind_param("s", $gmail);
+          $stmt->bind_param("s", $email);
           $stmt->execute();
           $stmt->store_result();
 
@@ -37,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               // Verificación de contraseña
               if (password_verify($contraseña, $hashed_password)) {
                   // Iniciar sesión y almacenar el gmail en la variable de sesión
-                  $_SESSION['usuario'] = $gmail;
+                  $_SESSION['usuario'] = $email;
   
                   // Redirección a la pagina principal
-                  header("Location: bienvenida.php");
+                  echo "<script>window.location.href = '../../index.html';</script>";
                   exit();
               } else {
                   echo "Contraseña incorrecta.";
