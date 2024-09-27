@@ -1,3 +1,6 @@
+//nombre de la BD:
+cocina
+
 //creacion del usuario
 
 CREATE TABLE usuario (
