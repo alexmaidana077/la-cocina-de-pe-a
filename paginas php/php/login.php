@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $_SESSION['usuario'] = $email;
   
                   // Redirección a la pagina principal
-                  echo "<script>window.location.href = '../../index.html';</script>";
+                  echo "<script>window.location.href = '../../index.php';</script>";
                   exit();
               } else {
                   echo "Contraseña incorrecta.";
