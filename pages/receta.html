@@ -40,13 +40,13 @@
     </header>
     <main>
         <div class="contenedor_receta">
-            <div class="texto">
+            <div class="texto" id="titulo">
                 <h1>Hamburguesa</h1>
-                <h2>Calorias Totales:<h2></h2></h2>
+                <h2>Calorias Totales:</h2>
             </div>
             <img src="../img/comidas/hambur.jpg" alt="">
         </div>
-        <div class="contenedor_ingredientes">
+        <div class="contenedor_ingredientes" id="ingredientes">
             <h1>Ingredientes</h1>
             <div class="ingredientes">
                 <li>500 g de carne molida de res (puedes usar carne mixta con cerdo si prefieres)</li>
@@ -64,10 +64,10 @@
                 <li>Pepinillos (opcional, al gusto)</li>
                 <li>Ketchup, mayonesa y mostaza (al gusto)</li>
                 <li>Aceite de oliva (para cocinar las hamburguesas)</li>
-              </div>
+            </div>
         </div>
         <!-- Preparacion -->
-        <div class="Contendor_Preparacion">
+        <div class="Contendor_Preparacion" id="preparacion">
             <h1>Preparacion</h1>
             <div class="paso_de_preparacion">
                 <li><strong>Prepara la mezcla de carne:</strong> En un bol grande, mezcla la carne molida con el huevo, el pan rallado, la cebolla picada, el ajo, la sal, la pimienta, la mostaza y la salsa Worcestershire si las estás usando. Amasa bien hasta que todos los ingredientes estén bien integrados.</li>
@@ -76,6 +76,11 @@
                 <li><strong> Prepara los panes:</strong> Si lo prefieres, tuesta los panes de hamburguesa en la sartén o parrilla hasta que estén dorados y crujientes.</li>
                 <li><strong> Arma las hamburguesas:</strong> Coloca las hamburguesas cocidas en los panes. Agrega las hojas de lechuga, las rodajas de tomate, y los pepinillos. Añade ketchup, mayonesa y mostaza al gusto. Cubre con la otra mitad del pan.</li>
                 <li><strong> Sirve:</strong> Disfruta tus hamburguesas inmediatamente mientras están calientes. Puedes acompañarlas con papas fritas o una ensalada fresca.</li>
+                <div class="botones">
+                <button type="button"  class="btn btn-primary" id="leer">Reproducir</button>
+                <button type="button"  class="btn btn-warning" id="detener" >Detener Reproducion</button>
+                <button type="button" class="btn btn-danger" id="reproducir">Reproducir Desde Donde Se Quedo</button>
+                </div>
             </div>
         </div>
     </main>
@@ -90,6 +95,7 @@
             <p>Copyright &copy;2024; Diseñado por: La Triple M</p>
         </div>
     </footer>
+    <script src="../js/lector.js"></script>
     <!-- Vincular Bootstrap JS y Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
