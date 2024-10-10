@@ -1,3 +1,24 @@
+<?php
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cocina";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Consulta para obtener los datos de clase
+$sql = "SELECT * FROM recetas";
+$result = $conn->query($sql);
+
+if (!$result) {
+    die("Error en la consulta: " . $conn->error);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +52,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="pages/categorias.html">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="paginas php/agregar.html">agregar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a>
@@ -164,7 +188,36 @@
             </div>
           </div>     
 </div>
-    </main>
+
+<?php while ($row = $result -> fetch_assoc()): ?>
+    <div class="card">
+        <!-- Asegúrate de que el valor de $row['img'] tenga la ruta correcta -->
+        <?php if (!empty($row['img'])): ?>
+            <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="...">
+        <?php else: ?>
+            <p>No hay imagen disponible</p>
+        <?php endif; ?>
+
+        <div class="card-body">
+            <?php if (!empty($row['nombre'])): ?>
+                <p class="card-text">Nombre: <?= htmlspecialchars($row['nombre']) ?></p>
+            <?php else: ?>
+                <p>No hay nombre disponible</p>
+            <?php endif; ?>
+        </div>
+
+        <div class="card-body">
+            <?php if (!empty($row['micro'])): ?>
+                <p class="card-text">Descripción: <?= htmlspecialchars($row['micro']) ?></p>
+            <?php else: ?>
+                <p>No hay descripción disponible</p>
+            <?php endif; ?>
+            <a href="paginas_php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
+        </div>
+    </div>
+<?php endwhile; ?>
+
+</main>
 
     <footer>
         <div class="footerContainer">

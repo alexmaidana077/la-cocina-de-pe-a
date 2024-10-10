@@ -51,10 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
           // Cerrar la declaración
           $stmt->close();
-      } else {
+          } else {
           echo "Por favor, completa todos los campos.";
-      }
-  }
+    }
+}
   
   // Cerrar la conexión a la base de datos
 $conn->close();

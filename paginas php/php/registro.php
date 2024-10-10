@@ -13,7 +13,7 @@ $conn = new mysqli($servidor, $Usuario, $Contra, $DbNombre);
 // Verificar la conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir los datos del formulario
@@ -47,6 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Por favor, completa todos los campos obligatorios.";
     }
 }
-
+}
 $conn->close();
 ?>

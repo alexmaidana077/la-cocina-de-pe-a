@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Publicación</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>  
+    
+    <h1 class="titform">Agregue Receta</h1>
+    <form action="../agregar.php" method="POST" enctype="multipart/form-data">
+        <label for="img">Imagen:</label>
+        <input type="file" id="img" name="img" required>
+
+        <label for="descripcion">Descripción:</label>
+        <input id="micro" name="micro" required></input>
+
+        <label for="coordenadas">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="coordenadas">Preparacion:</label>
+        <input type="text" id="preparacion" name="preparacion" required>
+
+        <label for="coordenadas">Categorias:</label>
+        <input type="text" id="categorias" name="categorias" required>
+
+        <label for="coordenadas">Ingredienes:</label>
+        <input type="text" id="ingredientes" name="ingredientes" required>
+
+        <input type="submit" value="Agregar Publicación">
+    </form>
+</body>
+</html>
