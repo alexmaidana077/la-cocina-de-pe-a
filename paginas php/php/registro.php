@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // Conexión a la base de datos
@@ -13,33 +12,63 @@ $conn = new mysqli($servidor, $Usuario, $Contra, $DbNombre);
 // Verificar la conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
-
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recibir los datos del formulario
     $email = $_POST['email'];
     $contraseña = $_POST['contraseña'];
-    $usuario =  $_POST['usuario']; 
+    $usuario = $_POST['usuario'];
 
-    // Se verifica si se ingresaron valores en email y contraseña
-    if (!empty($email) && !empty($contraseña) && !empty($usuario)){
+    // Validar que los campos no estén vacíos
+    if (!empty($email) && !empty($contraseña) && !empty($usuario)) {
+
+        // Validar si el email es válido
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Por favor, ingrese un email válido.";
+            exit;
+        }
+
+        // Verificar si el correo ya existe (opcional, dado que el PRIMARY KEY ya lo valida)
+        $sql_check_email = "SELECT email FROM usuario WHERE email = ?";
+        $stmt_check = $conn->prepare($sql_check_email);
+
+        if (!$stmt_check) {
+            die("Error al preparar la consulta de verificación: " . $conn->error);
+        }
+
+        $stmt_check->bind_param("s", $email);
+        $stmt_check->execute();
+        $stmt_check->store_result();
         
-        // En esta parte del código se hashea la contraseña
-        $contraseña_hashed = password_hash($contraseña, PASSWORD_DEFAULT); 
+        if ($stmt_check->num_rows > 0) {
+            echo "Error: El correo ya está registrado.";
+            exit;
+        }
+        $stmt_check->close();
 
-        // Se insertan los datos en la tabla de usuarios
+        // Hashear la contraseña
+        $contraseña_hashed = password_hash($contraseña, PASSWORD_DEFAULT);
+
+        // Insertar los datos en la tabla de usuarios
         $sql = "INSERT INTO usuario (email, contraseña, usuario) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $email, $contraseña_hashed, $usuario);  // se verifican los datos ingresados el email,contraseña
+
+        if (!$stmt) {
+            die("Error al preparar la consulta de inserción: " . $conn->error);
+        }
+
+        $stmt->bind_param("sss", $email, $contraseña_hashed, $usuario);
 
         if ($stmt->execute()) {
             echo "Registro exitoso";
             echo "<script>window.location.href = '../login.html';</script>";
         } else {
+            // Ver si hay un error específico
             if ($conn->errno == 1062) {
-                echo "Error: El correo ya existe";
+                echo "Error: El correo ya está registrado.";
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                echo "Error en la ejecución: " . $conn->error;
             }
         }
         $stmt->close();
@@ -47,6 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Por favor, completa todos los campos obligatorios.";
     }
 }
-}
+
 $conn->close();
 ?>

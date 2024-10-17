@@ -189,11 +189,11 @@ if (!$result) {
           </div>     
 </div>
 
-<?php while ($row = $result -> fetch_assoc()): ?>
+<?php while ($row = $result->fetch_assoc()): ?>
     <div class="card">
-        <!-- Asegúrate de que el valor de $row['img'] tenga la ruta correcta -->
+
         <?php if (!empty($row['img'])): ?>
-            <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="...">
+           <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
         <?php else: ?>
             <p>No hay imagen disponible</p>
         <?php endif; ?>
@@ -212,10 +212,11 @@ if (!$result) {
             <?php else: ?>
                 <p>No hay descripción disponible</p>
             <?php endif; ?>
-            <a href="paginas_php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
+            <a href="paginas_php/php/ver_receta.php?receta=<?= urlencode($row['nombre']) ?>" class="btn btn-primary">Ver Receta</a>
         </div>
     </div>
 <?php endwhile; ?>
+
 
 </main>
 

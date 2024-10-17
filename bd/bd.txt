@@ -6,5 +6,17 @@ cocina
 CREATE TABLE usuario (
     email VARCHAR (255) NOT NULL PRIMARY KEY,
     contraseña VARCHAR (200) NOT NULL,
-    usuario VARCHAR (150)
+    usuario VARCHAR (150) NOT NULL
+);
+
+//creacion de la tabla de las recetas
+
+CREATE TABLE recetas (
+  ID int(11) NOT NULL,
+  img varchar(250) NOT NULL,
+  preparacion varchar(250) NOT NULL,
+  micro varchar(250) NOT NULL,
+  nombre varchar(250) NOT NULL,
+  categorias varchar(250) NOT NULL,
+  ingredientes varchar(250) NOT NULL
 );

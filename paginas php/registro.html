@@ -43,22 +43,26 @@
                 </div>
             </nav>
         </header>
-    <main>
-        <form action="php/registro.php" method="post">
-            <h1 style="text-align: center">Crear Cuenta</h1>
-            <label for="nombreuser">Usuario (Opcional):</label>
-            <input type="text" name="usuario" id="NI">
-
-            <label for="nombre">Email:</label>
-            <input type="text" name="email" id="">
-
-            <label for="clave">Contraseña:</label>
-            <input type="password" name="contraseña" id="">
-
-            <input type="submit" value="registrarse" name="registrar">
-            <a class="volver" href="login.html">¿Ya tenes cuenta?¡Haz click aquí!</a>
-        </form>  
-    </main>
+        <main>
+            <form action="php/registro.php" method="post" onsubmit="return validarFormulario()">
+                <h1 style="text-align: center">Crear Cuenta</h1>
+                <label for="nombreuser">Usuario:</label>
+                <input type="text" name="usuario" id="NI" required>
+        
+                <label for="nombre">Email:</label>
+                <input type="text" name="email" id="email" required>
+        
+                <label for="clave">Contraseña:</label>
+                <input type="password" name="contraseña" id="contraseña" required>
+        
+                <label for="clave">Confirme la contraseña:</label>
+                <input type="password" id="confirmarContraseña" name="confirmarContraseña" required>
+        
+                <input type="submit" value="registrarse" name="registrar">
+                <a class="volver" href="login.html">¿Ya tienes cuenta? ¡Haz click aquí!</a>
+            </form>  
+        </main>
+        
     <footer>
         <div class="footerContainer">
             <div class="redes">
@@ -76,6 +80,8 @@
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"
         ></script>
+
+        <script src="../js/registro.js"></script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
