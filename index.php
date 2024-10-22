@@ -187,11 +187,8 @@ if (!$result) {
               <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
             </div>
           </div>     
-</div>
-
-<?php while ($row = $result->fetch_assoc()): ?>
+          <?php while ($row = $result->fetch_assoc()): ?>
     <div class="card">
-
         <?php if (!empty($row['img'])): ?>
            <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
         <?php else: ?>
@@ -216,6 +213,9 @@ if (!$result) {
         </div>
     </div>
 <?php endwhile; ?>
+</div>
+
+
 
 
 </main>
