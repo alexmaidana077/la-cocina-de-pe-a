@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Conexión a la base de datos
 $servidor = "localhost";
 $Usuario = "root";
 $Contra = ""; 
@@ -15,21 +14,18 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recibir los datos del formulario
+    
     $email = $_POST['email'];
     $contraseña = $_POST['contraseña'];
     $usuario = $_POST['usuario'];
 
-    // Validar que los campos no estén vacíos
     if (!empty($email) && !empty($contraseña) && !empty($usuario)) {
 
-        // Validar si el email es válido
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Por favor, ingrese un email válido.";
             exit;
         }
 
-        // Verificar si el correo ya existe (opcional, dado que el PRIMARY KEY ya lo valida)
         $sql_check_email = "SELECT email FROM usuario WHERE email = ?";
         $stmt_check = $conn->prepare($sql_check_email);
 
@@ -47,10 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $stmt_check->close();
 
-        // Hashear la contraseña
         $contraseña_hashed = password_hash($contraseña, PASSWORD_DEFAULT);
 
-        // Insertar los datos en la tabla de usuarios
         $sql = "INSERT INTO usuario (email, contraseña, usuario) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
@@ -64,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Registro exitoso";
             echo "<script>window.location.href = '../login.html';</script>";
         } else {
-            // Ver si hay un error específico
             if ($conn->errno == 1062) {
                 echo "Error: El correo ya está registrado.";
             } else {

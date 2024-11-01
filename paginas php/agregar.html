@@ -16,17 +16,23 @@
         <label for="descripcion">Descripción:</label>
         <input id="micro" name="micro" required></input>
 
-        <label for="coordenadas">Nombre:</label>
+        <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
-        <label for="coordenadas">Preparacion:</label>
-        <input type="text" id="preparacion" name="preparacion" required>
+        <label for="preparacion">Preparacion:</label>
+        <textarea type="text" id="preparacion" name="preparacion" required></textarea>
 
-        <label for="coordenadas">Categorias:</label>
-        <input type="text" id="categorias" name="categorias" required>
+        <label for="categorias">Categorias:</label>
+        <select name="categorias" id="">elegir
+            <option value="">Desayunos</option>
+            <option value="">Entradas</option>
+            <option value="">Platos Principales</option>
+            <option value="">Guarnición</option>
+            <option value="">Postres</option>
+        </select>
 
-        <label for="coordenadas">Ingredienes:</label>
-        <input type="text" id="ingredientes" name="ingredientes" required>
+        <label for="ingredientes">Ingredienes:</label>
+        <textarea type="text" id="ingredientes" name="ingredientes" required></textarea>
 
         <input type="submit" value="Agregar Publicación">
     </form>

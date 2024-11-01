@@ -11,7 +11,6 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Consulta para obtener los datos de clase
 $sql = "SELECT * FROM recetas";
 $result = $conn->query($sql);
 
@@ -25,7 +24,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La cocina de peña</title>
-    <link rel="shortcut icon" href="img/logos/1 copy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logos/1 copy.png" type="image/x-icon">   
     <link rel="prerender" href="pages/nosotros.html">
     <link rel="prerender" href="pages/receta.html">
     <!-- Vincular Bootstrap CSS -->
@@ -184,12 +183,10 @@ if (!$result) {
             <div class="card-body">
               <h5 class="card-title">Locro</h5>
               <p class="card-text">Guiso espeso de maíz, carnes y legumbres. Tradicional y contundente.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
+              <a href="receta.php" class="btn btn-primary">Ver Receta</a>
             </div>
-          </div>     
-</div>
-
-<?php while ($row = $result->fetch_assoc()): ?>
+          </div>   
+           <?php while ($row = $result->fetch_assoc()): ?>
     <div class="card">
 
         <?php if (!empty($row['img'])): ?>
@@ -200,7 +197,8 @@ if (!$result) {
 
         <div class="card-body">
             <?php if (!empty($row['nombre'])): ?>
-                <p class="card-text">Nombre: <?= htmlspecialchars($row['nombre']) ?></p>
+                <p class="card-title
+                "> <?= htmlspecialchars($row['nombre']) ?></p>
             <?php else: ?>
                 <p>No hay nombre disponible</p>
             <?php endif; ?>
@@ -215,9 +213,8 @@ if (!$result) {
             <a href="paginas_php/php/ver_receta.php?receta=<?= urlencode($row['nombre']) ?>" class="btn btn-primary">Ver Receta</a>
         </div>
     </div>
-<?php endwhile; ?>
-
-
+<?php endwhile; ?> 
+</div>
 </main>
 
     <footer>

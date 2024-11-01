@@ -329,6 +329,7 @@ footer p {
     gap: 20px; /* Espacio entre cada línea de imagen y texto */
     padding: 20px;
 }
+
 .contenedor_ingredientes li{
     font-size: 20px;
 }
@@ -337,6 +338,26 @@ footer p {
     align-items: center; /* Centra verticalmente la imagen y el texto */
     margin-top: -20px;
 }
+
+.overflow-auto{
+    padding-bottom: 40px;
+    padding-right: 10px;
+
+}
+
+.overflow-auto::-webkit-scrollbar{
+    width: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-track{
+    background-color: #545c6300;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb{
+    background-color: #0088ff00;
+    border-radius: 10px;
+}
+
 @media (max-width: 768px) {
     .contenedor_ingredientes{
         margin: -110px 15px auto;
