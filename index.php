@@ -185,10 +185,9 @@ if (!$result) {
               <p class="card-text">Guiso espeso de maíz, carnes y legumbres. Tradicional y contundente.</p>
               <a href="receta.php" class="btn btn-primary">Ver Receta</a>
             </div>
-          </div>   
-           <?php while ($row = $result->fetch_assoc()): ?>
+          </div>     
+          <?php while ($row = $result->fetch_assoc()): ?>
     <div class="card">
-
         <?php if (!empty($row['img'])): ?>
            <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
         <?php else: ?>
@@ -213,7 +212,7 @@ if (!$result) {
             <a href="paginas_php/php/ver_receta.php?receta=<?= urlencode($row['nombre']) ?>" class="btn btn-primary">Ver Receta</a>
         </div>
     </div>
-<?php endwhile; ?> 
+<?php endwhile; ?>
 </div>
 </main>
 
