@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -11,7 +12,8 @@ if ($mysqli->connect_error) {
     die("Conexión fallida: " . $mysqli->connect_error);
 }
 
-$receta_id = 3;
+// Captura el ID de la receta desde la URL
+$receta_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $sql = "SELECT * FROM recetas WHERE id = ?";
 $stmt = $mysqli->prepare($sql);
@@ -100,6 +102,39 @@ if ($row = $result->fetch_assoc()):
                 </div>
             </div>
         </div>
+
+        <div class="calificacion">
+        <h3>Calificación</h3>
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+
+            <form action="paginas php/php/calificar_receta.php" method="post">
+                <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
+                <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($_SESSION['usuario_id']) ?>">
+                <label>
+                    Calificación:
+                    <select name="calificacion" required>
+                        <option value="1">1 estrella</option>
+                        <option value="2">2 estrellas</option>
+                        <option value="3">3 estrellas</option>
+                        <option value="4">4 estrellas</option>
+                        <option value="5">5 estrellas</option>
+                    </select>
+                </label>
+                <button type="submit" class="btn btn-primary">Enviar Calificación</button>
+            </form>
+        <?php else: ?>
+
+            <p>Inicia sesión para calificar esta receta.</p>
+            <a href="paginas php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
+        <?php endif; ?>
+    </div>
+
+    <div class="calificacion_promedio">
+        <h3>Calificación promedio:<?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
+        <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
+    </div>
+
+
     </main>
 
     <footer>

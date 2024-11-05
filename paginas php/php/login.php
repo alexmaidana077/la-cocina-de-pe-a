@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               // Verificación de contraseña
               if (password_verify($contraseña, $hashed_password)) {
                   // Iniciar sesión y almacenar el gmail en la variable de sesión
-                  $_SESSION['usuario'] = $email;
+                  $_SESSION['usuario_id'] = $email;
   
                   // Redirección a la pagina principal
                   echo "<script>window.location.href = '../../index.php';</script>";

@@ -63,7 +63,7 @@ if (!$result) {
                         session_start();
                         
                         // Verificar si el usuario ha iniciado sesión
-                        if (!isset($_SESSION['usuario'])) {
+                        if (!isset($_SESSION['usuario_id'])) {
                             // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
                             echo '
                             <li class="nav-item">
@@ -119,74 +119,8 @@ if (!$result) {
         </div>
         <h1 class="tit">¡Deléitate con Nuestras Mejores Recetas!</h1>
         <!-- ------cartas: ------------>
-    <div class="contenedor_visualizar">
-        <div class="card">
-            <img src="img/comidas/hambur.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">hamburguesa</h5>
-              <p class="card-text">Una jugosa carne, cubierta con queso cheddar derretido, entre dos suaves panes tostados. Sencilla pero deliciosa.
-            </p>
-            <a href="paginas php/php/ver_receta.php" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/polenta.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Polenta</h5>
-              <p class="card-text">Una cremosa polenta con tuco rojo casero. La polenta suave contrasta con la salsa de tomate especiada y aromática.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/sorrentinos.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Sorrentinos</h5>
-              <p class="card-text">Sorrentinos rellenos, cubiertos de tuco rojo casero. Pasta y salsa en armonía.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="img/comidas/tortilla_papa.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Tortilla de Papa</h5>
-              <p class="card-text">Tortilla dorada de papas tiernas, ligada con huevos. Crujiente por fuera, suave por dentro.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/torta_jamoyqueso.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Tarta de Jamon y Queso</h5>
-              <p class="card-text">Masa crujiente rellena de jamón y queso fundido. Salado y reconfortante.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/pasteldepapa.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Pastel De Papa</h5>
-              <p class="card-text">Capas de puré y carne picada, gratinado al horno. Clásico reconfortante.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/napo.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Napolitana</h5>
-              <p class="card-text">Milanesa cubierta de tomate, jamón y queso derretido. Crujiente y sabrosa.</p>
-              <a href="paginas php/php/ver_receta.php?receta=hamburguesa" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/comidas/locro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Locro</h5>
-              <p class="card-text">Guiso espeso de maíz, carnes y legumbres. Tradicional y contundente.</p>
-              <a href="receta.php" class="btn btn-primary">Ver Receta</a>
-            </div>
-          </div>     
-          <?php while ($row = $result->fetch_assoc()): ?>
+<div class="contenedor_visualizar">
+        <?php while ($row = $result->fetch_assoc()): ?>
     <div class="card">
         <?php if (!empty($row['img'])): ?>
            <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
@@ -209,7 +143,11 @@ if (!$result) {
             <?php else: ?>
                 <p>No hay descripción disponible</p>
             <?php endif; ?>
-            <a href="paginas_php/php/ver_receta.php?receta=<?= urlencode($row['nombre']) ?>" class="btn btn-primary">Ver Receta</a>
+            <div class="calificacion_promedio">
+                <h3> <?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
+                <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
+            </div>
+            <a href="receta.php?id=<?= $row['id'] ?>" class="btn btn-primary">Ver Receta</a>
         </div>
     </div>
 <?php endwhile; ?>
