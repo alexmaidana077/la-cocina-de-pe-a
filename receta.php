@@ -60,6 +60,8 @@ if ($row = $result->fetch_assoc()):
     </header>
 
     <main>
+
+       
         <div class="contenedor_receta">
             <div class="texto" id="titulo">
                 <h1 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h1>
@@ -102,39 +104,62 @@ if ($row = $result->fetch_assoc()):
                 </div>
             </div>
         </div>
-
+        
+        <?php
+            if (isset($_SESSION['mensaje'])) {
+            echo "<div class='alert alert-info'>" . htmlspecialchars($_SESSION['mensaje']) . "</div>";
+            unset($_SESSION['mensaje']);
+            }
+        ?>
         <div class="calificacion">
-        <h3>Calificación</h3>
-        <?php if (isset($_SESSION['usuario_id'])): ?>
+            <h3>Calificación</h3>
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <?php
+                $usuario_id = $_SESSION['usuario_id'];
+                
+                // Verificar si el usuario ya votó
+                $check_query = "SELECT calificacion FROM votos WHERE id_usuario = ? AND id_receta = ?";
+                $check_stmt = $mysqli->prepare($check_query);
+                $check_stmt->bind_param("si", $usuario_id, $receta_id);
+                $check_stmt->execute();
+                $voto_result = $check_stmt->get_result();
+                ?>
 
-            <form action="paginas php/php/calificar_receta.php" method="post">
-                <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
-                <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($_SESSION['usuario_id']) ?>">
-                <label>
-                    Calificación:
-                    <select name="calificacion" required>
-                        <option value="1">1 estrella</option>
-                        <option value="2">2 estrellas</option>
-                        <option value="3">3 estrellas</option>
-                        <option value="4">4 estrellas</option>
-                        <option value="5">5 estrellas</option>
-                    </select>
-                </label>
-                <button type="submit" class="btn btn-primary">Enviar Calificación</button>
-            </form>
-        <?php else: ?>
+                <?php if ($voto_result->num_rows > 0): ?>
+                    <p>Ya has calificado esta receta.</p>
+                    <form action="paginas php/php/eliminar_voto.php" method="post">
+                        <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
+                        <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
+                        <button type="submit" class="btn btn-danger">Eliminar mi voto</button>
+                    </form>
+                <?php else: ?>
+                    <!-- Formulario de calificación -->
+                    <form action="paginas php/php/calificar_receta.php" method="post">
+                        <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
+                        <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
+                        <label>
+                            Calificación:
+                            <select name="calificacion" required>
+                                <option value="1">1 estrella ⭐</option>
+                                <option value="2">2 estrellas ⭐⭐</option>
+                                <option value="3">3 estrellas ⭐⭐⭐</option>
+                                <option value="4">4 estrellas ⭐⭐⭐⭐</option>
+                                <option value="5">5 estrellas ⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </label>
+                        <button type="submit" class="btn btn-primary">Enviar Calificación</button>
+                    </form>
+                    <?php endif; ?>
+            <?php else: ?>
+                <p>Inicia sesión para calificar esta receta.</p>
+                <a href="paginas php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
+            <?php endif; ?>
+        </div>
 
-            <p>Inicia sesión para calificar esta receta.</p>
-            <a href="paginas php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
-        <?php endif; ?>
-    </div>
-
-    <div class="calificacion_promedio">
-        <h3>Calificación promedio:<?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
-        <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
-    </div>
-
-
+        <div class="calificacion_promedio">
+            <h3>Calificación promedio: <?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
+            <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
+        </div>
     </main>
 
     <footer>

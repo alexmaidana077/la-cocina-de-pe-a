@@ -144,7 +144,7 @@ if (!$result) {
                 <p>No hay descripción disponible</p>
             <?php endif; ?>
             <div class="calificacion_promedio">
-                <h3> <?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
+                <h3> <?= round($row['calificacion_promedio'], 1) ?> ⭐</h3>
                 <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
             </div>
             <a href="receta.php?id=<?= $row['id'] ?>" class="btn btn-primary">Ver Receta</a>
