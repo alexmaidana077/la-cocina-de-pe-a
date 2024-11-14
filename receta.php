@@ -102,9 +102,7 @@ if ($row = $result->fetch_assoc()):
                     <button type="button" class="btn btn-danger" id="reproducir">Reproducir Desde Donde Se Quedó</button>
                 </div>
             </div>
-        </div>
-        
-        <?php
+            <?php
             if (isset($_SESSION['mensaje'])) {
                 echo "<div class='alert alert-info'>" . htmlspecialchars($_SESSION['mensaje']) . "</div>";
                 unset($_SESSION['mensaje']);
@@ -160,6 +158,9 @@ if ($row = $result->fetch_assoc()):
             <h3>Calificación promedio: <?= round($row['calificacion_promedio'] ?? 0, 1) ?> estrellas</h3>
             <p>(Basado en <?= $row['numero_votos'] ?? 0 ?> votos)</p>
         </div>
+        </div>
+        
+       
     </main>
 
     <footer>
