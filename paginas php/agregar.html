@@ -14,25 +14,25 @@
         <input type="file" id="img" name="img" required>
 
         <label for="descripcion">Descripción:</label>
-        <input id="micro" name="micro" required></input>
+        <input type="text" id="micro" name="micro" required />
 
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
-        <label for="preparacion">Preparacion:</label>
-        <textarea type="text" id="preparacion" name="preparacion" required></textarea>
+        <label for="preparacion">Preparación:</label>
+        <textarea id="preparacion" name="preparacion" required></textarea>
 
-        <label for="categorias">Categorias:</label>
-        <select name="categorias" id="">elegir
-            <option value="">Desayunos</option>
-            <option value="">Entradas</option>
-            <option value="">Platos Principales</option>
-            <option value="">Guarnición</option>
-            <option value="">Postres</option>
+        <label for="categorias">Categorías:</label>
+        <select name="categorias" id="categorias" required>
+            <option value="Desayunos">Desayunos</option>
+            <option value="Entradas">Entradas</option>
+            <option value="Platos Principales">Platos Principales</option>
+            <option value="Guarnicion">Guarnición</option>
+            <option value="Postres">Postres</option>
         </select>
 
-        <label for="ingredientes">Ingredienes:</label>
-        <textarea type="text" id="ingredientes" name="ingredientes" required></textarea>
+        <label for="ingredientes">Ingredientes:</label>
+        <textarea id="ingredientes" name="ingredientes" required></textarea>
 
         <input type="submit" value="Agregar Publicación">
     </form>

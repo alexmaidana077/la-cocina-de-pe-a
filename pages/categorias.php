@@ -1,3 +1,24 @@
+<?php
+
+$servername = "localhost";
+$username = "root"; 
+$contra = "";
+$dbname = "cocina";
+
+$conn = new mysqli($servername, $username, $contra,$dbname);
+
+if ($conn -> connect_error){
+    die ("Conexión Fallida:" . $conn-> connect_error);
+}
+
+$sql = "SELECT * FROM recetas";
+$result = $conn -> query ($sql);
+
+if (!$result){
+    die ("Error en la Consulta:" . $conn -> error);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +63,38 @@
         <div class="contenedor_categoria">
             <div class="grupo-tarjetas">
                
-                <div class="tarjeta" style="background-image:url(../img/comidas/empanada.jpg);">
+                <div class="tarjeta" style="background-image:url(../img/comidas/desayuno.jpg);">
                     <div class="detalles">
-                        <h2>EMPANADAS</h2>
+                        <h2>DESAYUNOS</h2>
+                        <a href="sub_categoria.html">Ver todos</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta" style="background-image:url(../img/comidas/entrada.jpg);">
+                    <div class="detalles">
+                        <h2>ENTRADAS</h2>
+                        <a href="sub_categoria.html">Ver todos</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta" style="background-image:url(../img/comidas/principal.jpg);">
+                    <div class="detalles">
+                        <h2>PLATOS PRINCIPALES</h2>
+                        <a href="sub_categoria.html">Ver todos</a>
+                    </div>
+                </div>
+
+
+                <div class="tarjeta" style="background-image:url(../img/comidas/guarniciones.jpg);">
+                    <div class="detalles">
+                        <h2>GUARNICIÓN</h2>
+                        <a href="sub_categoria.html">Ver todos</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta" style="background-image:url(../img/comidas/postre.jpg);">
+                    <div class="detalles">
+                        <h2>POSTRES</h2>
                         <a href="sub_categoria.html">Ver todos</a>
                     </div>
                 </div>

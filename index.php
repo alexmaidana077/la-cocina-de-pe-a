@@ -50,7 +50,7 @@ if (!$result) {
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/categorias.html">Categorías</a>
+                            <a class="nav-link" href="pages/categorias.php">Categorías</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="paginas php/agregar.html">agregar</a>
