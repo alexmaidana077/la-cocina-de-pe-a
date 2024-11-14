@@ -22,7 +22,6 @@
 
                 <!-- Elementos del menú -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Botón para cerrar el menú -->
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -39,7 +38,7 @@
     <main>
         <hr style="margin-top: 90px;">
         <h1 class="tit" style="margin-top: 40px;">¡Deléitate con Nuestras Categorias!</h1>
-    <!-- ------categoria: ------------>
+        
         <div class="contenedor_categoria">
             <div class="grupo-tarjetas">
                
@@ -49,39 +48,7 @@
                         <a href="sub_categoria.html">Ver todos</a>
                     </div>
                 </div>
-                <div class="tarjeta" style="background-image:url(../img/comidas/pasta.jpg);">
-                    <div class="detalles">
-                        <h2>PASTAS</h2>
-                        <a href="">Ver todos</a>
-                    </div>
-                </div>
-                <div class="tarjeta" style="background-image:url(../img/comidas/guiso.jpg);">
-                    <div class="detalles">
-                        <h2>GUISOS Y SOPAS</h2>
-                        <a href="">Ver todos</a>
-                    </div>
-                </div>
-            </div>
-            <div class="grupo-tarjetas">
-                <div class="tarjeta" style="background-image:url(../img/comidas/asado.jpg) ;">
-                    <div class="detalles">
-                        <h2>ASADOS Y PARRILLAS</h2>
-                        <a href="">Ver todos</a>
-                    </div>
-                </div>
-                <div class="tarjeta" style="background-image:url(../img/comidas/milanesa.jpg);">
-                    <div class="detalles">
-                        <h2>MILANESAS</h2>
-                        <a href="">Ver todos</a>
-                    </div>
-                </div>
-                
-                <div class="tarjeta" style="background-image:url(../img/comidas/pizza.jpg);">
-                    <div class="detalles">
-                        <h2>PIZZAS Y FAINÁ</h2>
-                        <a href="">Ver todos</a>
-                    </div>
-                </div>
+               
                 
             </div>
         </div>
