@@ -1,7 +1,7 @@
 <?php
 // Archivo: ver.php
 // Incluye el archivo de conexión a la base de datos
-require_once("db.php");
+require_once("data.php");
 
 // Obtiene la categoría desde la URL
 $categorias = isset($_GET['categorias']) ? $_GET['categorias'] : '';

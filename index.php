@@ -56,7 +56,7 @@ if (!$result) {
                             <a class="nav-link" href="paginas php/agregar.html">agregar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a>
+                            <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
                         </li>
                         <?php
                         // Iniciar la sesión si no se ha iniciado

@@ -5,17 +5,18 @@ $username = "root";
 $contra = "";
 $dbname = "cocina";
 
-$conn = new mysqli($servername, $username, $contra,$dbname);
+$conn = new mysqli($servername, $username, $contra, $dbname);
 
 if ($conn -> connect_error){
-    die ("Conexión Fallida:" . $conn-> connect_error);
+    die ("Conexión Fallida:" . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM recetas";
-$result = $conn -> query ($sql);
+// Consulta SQL para obtener categorías únicas
+$sql = "SELECT DISTINCT categorias FROM recetas";
+$result = $conn -> query($sql);
 
 if (!$result){
-    die ("Error en la Consulta:" . $conn -> error);
+    die ("Error en la Consulta:" . $conn->error);
 }
 
 ?>
@@ -34,23 +35,38 @@ if (!$result){
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <!-- Nombre a la izquierda -->
                 <a class="navbar-brand" href="../index.php"><img src="../img/logos/10.png" alt="Logo"></a>
-                <!-- Botón colapsable en móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <!-- Elementos del menú -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Inicio</a>
+                            <a class="nav-link" href="nosotros.php">Acerca de Nosotros</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
-                        </li>
+                        <?php
+                        // Iniciar la sesión si no se ha iniciado
+                        session_start();
+                        
+                        // Verificar si el usuario ha iniciado sesión
+                        if (!isset($_SESSION['usuario_id'])) {
+                            // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/registro.html">Registrarse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
+                            </li>';
+                        } else {
+                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
+                            </li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -62,44 +78,28 @@ if (!$result){
         
         <div class="contenedor_categoria">
             <div class="grupo-tarjetas">
-               
-                <div class="tarjeta" style="background-image:url(../img/comidas/desayuno.jpg);">
-                    <div class="detalles">
-                        <h2>DESAYUNOS</h2>
-                        <a href="sub_categoria.html">Ver todos</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta" style="background-image:url(../img/comidas/entrada.jpg);">
-                    <div class="detalles">
-                        <h2>ENTRADAS</h2>
-                        <a href="sub_categoria.html">Ver todos</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta" style="background-image:url(../img/comidas/principal.jpg);">
-                    <div class="detalles">
-                        <h2>PLATOS PRINCIPALES</h2>
-                        <a href="sub_categoria.html">Ver todos</a>
-                    </div>
-                </div>
-
-
-                <div class="tarjeta" style="background-image:url(../img/comidas/guarniciones.jpg);">
-                    <div class="detalles">
-                        <h2>GUARNICIÓN</h2>
-                        <a href="sub_categoria.html">Ver todos</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta" style="background-image:url(../img/comidas/postre.jpg);">
-                    <div class="detalles">
-                        <h2>POSTRES</h2>
-                        <a href="sub_categoria.html">Ver todos</a>
-                    </div>
-                </div>
-               
+                <?php
+                $imagenes_categorias = [
+                    "Desayunos" => "../img/comidas/desayuno.jpg",
+                    "Entradas" => "../img/comidas/entrada.jpg",
+                    "Platos Principales" => "../img/comidas/principal.jpg",
+                    "Guarnicion" => "../img/comidas/guarniciones.jpg",
+                    "Postres" => "../img/comidas/postre.jpg"
+                ];
                 
+                while ($row = $result->fetch_assoc()) {
+                    $categoria = $row['categorias'];
+                    $imagen = isset($imagenes_categorias[$categoria]) ? $imagenes_categorias[$categoria] : "../img/comidas/default.jpg"; // Imagen por defecto
+                ?>
+                    <div class="tarjeta" style="background-image:url('<?php echo $imagen; ?>');">
+                        <div class="detalles">
+                            <h2><?php echo strtoupper($categoria); ?></h2>
+                            <a href="../sub_categoria.php?categoria=<?php echo urlencode($categoria); ?>">Ver todos</a>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </main>
@@ -114,7 +114,8 @@ if (!$result){
             <p>Copyright &copy;2024; Diseñado por: La Triple M</p>
         </div>
     </footer>
-    <!-- Vincular Bootstrap JS y Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<?php $conn->close(); ?>
