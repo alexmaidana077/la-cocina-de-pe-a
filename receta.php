@@ -12,7 +12,6 @@ if ($mysqli->connect_error) {
     die("Conexión fallida: " . $mysqli->connect_error);
 }
 
-// Captura el ID de la receta desde la URL
 $receta_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $sql = "SELECT * FROM recetas WHERE id = ?";
@@ -27,8 +26,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($row = $result->fetch_assoc()):
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,8 +59,6 @@ if ($row = $result->fetch_assoc()):
     </header>
 
     <main>
-
-       
         <div class="contenedor_receta">
             <div class="texto" id="titulo">
                 <h1 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h1>
@@ -77,7 +74,7 @@ if ($row = $result->fetch_assoc()):
         <div class="contenedor_ingredientes" id="ingredientes">
             <h1>Ingredientes</h1>
             <div class="ingredientes">
-                <div class="overflow-auto" style="heigth: 200px;">
+                <div class="overflow-auto" style="height: 200px;">
                     <ul id="scrollspyHeading1">
                         <?php
                         $ingredientes = explode(',', $row['ingredientes']);
@@ -92,11 +89,13 @@ if ($row = $result->fetch_assoc()):
         <div class="Contendor_Preparacion" id="preparacion">
             <h1>Preparación</h1>
             <div class="paso_de_preparacion">
-            <?php
-                $preparaciones = explode(',', $row['preparacion']);
-                foreach ($preparaciones as $preparacion): ?>
-                    <li><?= htmlspecialchars(trim($preparacion)) ?></li>
-            <?php endforeach; ?>
+                <ul>
+                    <?php
+                    $preparaciones = explode(',', $row['preparacion']);
+                    foreach ($preparaciones as $preparacion): ?>
+                        <li><?= htmlspecialchars(trim($preparacion)) ?></li>
+                    <?php endforeach; ?>
+                </ul>
                 <div class="botones">
                     <button type="button" class="btn btn-primary" id="leer">Reproducir</button>
                     <button type="button" class="btn btn-warning" id="detener">Detener Reproducción</button>
@@ -105,10 +104,11 @@ if ($row = $result->fetch_assoc()):
             </div>
             <?php
             if (isset($_SESSION['mensaje'])) {
-            echo "<div class='alert alert-info'>" . htmlspecialchars($_SESSION['mensaje']) . "</div>";
-            unset($_SESSION['mensaje']);
+                echo "<div class='alert alert-info'>" . htmlspecialchars($_SESSION['mensaje']) . "</div>";
+                unset($_SESSION['mensaje']);
             }
         ?>
+
         <div class="calificacion">
             <h3>Calificación</h3>
             <?php if (isset($_SESSION['usuario_id'])): ?>
@@ -121,18 +121,18 @@ if ($row = $result->fetch_assoc()):
                 $check_stmt->bind_param("si", $usuario_id, $receta_id);
                 $check_stmt->execute();
                 $voto_result = $check_stmt->get_result();
+                $check_stmt->close();
                 ?>
 
                 <?php if ($voto_result->num_rows > 0): ?>
                     <p>Ya has calificado esta receta.</p>
-                    <form action="paginas php/php/eliminar_voto.php" method="post">
+                    <form action="paginas/php/php/eliminar_voto.php" method="post">
                         <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
                         <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
                         <button type="submit" class="btn btn-danger">Eliminar mi voto</button>
                     </form>
                 <?php else: ?>
-                    <!-- Formulario de calificación -->
-                    <form action="paginas php/php/calificar_receta.php" method="post">
+                    <form action="paginas/php/php/calificar_receta.php" method="post">
                         <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
                         <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
                         <label>
@@ -147,16 +147,16 @@ if ($row = $result->fetch_assoc()):
                         </label>
                         <button type="submit" class="btn btn-primary">Enviar Calificación</button>
                     </form>
-                    <?php endif; ?>
+                <?php endif; ?>
             <?php else: ?>
                 <p>Inicia sesión para calificar esta receta.</p>
-                <a href="paginas php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
+                <a href="paginas/php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
 
         <div class="calificacion_promedio">
-            <h3>Calificación promedio: <?= round($row['calificacion_promedio'], 1) ?> estrellas</h3>
-            <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
+            <h3>Calificación promedio: <?= round($row['calificacion_promedio'] ?? 0, 1) ?> estrellas</h3>
+            <p>(Basado en <?= $row['numero_votos'] ?? 0 ?> votos)</p>
         </div>
         </div>
         

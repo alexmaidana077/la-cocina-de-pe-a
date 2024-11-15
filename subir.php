@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once("db.php");
+    require_once("data.php");
 
     $target_dir = "uploads/";
     $nombre = $_POST['nombre'];

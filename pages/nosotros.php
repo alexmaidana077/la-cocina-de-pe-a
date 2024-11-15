@@ -1,3 +1,16 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cocina";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,11 +39,30 @@
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Inicio</a>
+                            <a class="nav-link" href="categorias.php">Categorías</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="categorias.html">Categorías</a>
-                        </li>
+                        <?php
+                        // Iniciar la sesión si no se ha iniciado
+                        session_start();
+                        
+                        // Verificar si el usuario ha iniciado sesión
+                        if (!isset($_SESSION['usuario_id'])) {
+                            // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/registro.html">Registrarse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
+                            </li>';
+                        } else {
+                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
+                            </li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
