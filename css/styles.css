@@ -277,6 +277,10 @@ footer p {
     margin-right: auto; /* Mantiene el texto alineado a la izquierda */
 }
 
+.texto .card-text{
+    color: white;
+}
+
 .contenedor_receta img {
     height: 100%; /* La imagen toma todo el alto del contenedor */
     border-top-right-radius: 10px; /* Mantiene el borde redondeado arriba a la derecha */
@@ -307,7 +311,6 @@ footer p {
 /* ------->info de ingredientes */
 /*--------------> div Contendor_Preparacion */
 .Contendor_Preparacion{
-    margin: -980px 430px auto;
     width: 65%;
     height: auto; /* Ajusta la altura según el contenido */
     display: flex;
@@ -323,8 +326,8 @@ footer p {
 .contenedor_ingredientes{
     border: 5px solid #2C3E50;
     border-radius: 10px;
-    margin: -110px 35px auto;
-    width: 28%;
+    margin: -110px 10px auto;
+    width: 98%;
     height: auto; /* Ajusta la altura según el contenido */
     display: flex;
     flex-direction: column; /* Alinea cada item en una columna */

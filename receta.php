@@ -65,7 +65,7 @@ if ($row = $result->fetch_assoc()):
         <div class="contenedor_receta">
             <div class="texto" id="titulo">
                 <h1 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h1>
-                <p class="card-text">Descripción: <?= htmlspecialchars($row['micro']) ?></p>
+                <p class="card-text"><strong>Descripción: </strong><?= htmlspecialchars($row['micro']) ?></p>
             </div>
             <?php if (!empty($row['img'])): ?>
                 <img src="<?= htmlspecialchars($row['img']) ?>" alt="Imagen de la receta" class="img-fluid">
