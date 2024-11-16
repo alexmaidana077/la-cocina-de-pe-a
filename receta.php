@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -49,9 +48,30 @@ if ($row = $result->fetch_assoc()):
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/categorias.html">Categorías</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a></li>
+                        <?php
+                        // Iniciar la sesión si no se ha iniciado
+                        session_start();
+                        
+                        // Verificar si el usuario ha iniciado sesión
+                        if (!isset($_SESSION['usuario_id'])) {
+                            // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/registro.html">Registrarse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
+                            </li>';
+                        } else {
+                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
+                            </li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -126,13 +146,13 @@ if ($row = $result->fetch_assoc()):
 
                 <?php if ($voto_result->num_rows > 0): ?>
                     <p>Ya has calificado esta receta.</p>
-                    <form action="paginas/php/php/eliminar_voto.php" method="post">
+                    <form action="paginas php/php/eliminar_voto.php" method="post">
                         <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
                         <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
                         <button type="submit" class="btn btn-danger">Eliminar mi voto</button>
                     </form>
                 <?php else: ?>
-                    <form action="paginas/php/php/calificar_receta.php" method="post">
+                    <form action="paginas php/php/calificar_receta.php" method="post">
                         <input type="hidden" name="receta_id" value="<?= htmlspecialchars($receta_id) ?>">
                         <input type="hidden" name="usuario_id" value="<?= htmlspecialchars($usuario_id) ?>">
                         <label>
@@ -150,7 +170,7 @@ if ($row = $result->fetch_assoc()):
                 <?php endif; ?>
             <?php else: ?>
                 <p>Inicia sesión para calificar esta receta.</p>
-                <a href="paginas/php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
+                <a href="paginas php/login.html" class="btn btn-secondary">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
 
@@ -158,6 +178,44 @@ if ($row = $result->fetch_assoc()):
             <h3>Calificación promedio: <?= round($row['calificacion_promedio'] ?? 0, 1) ?> estrellas</h3>
             <p>(Basado en <?= $row['numero_votos'] ?? 0 ?> votos)</p>
         </div>
+        <?php
+        // Consulta SQL corregida
+$votos_query = "SELECT usuario.usuario AS nombre, votos.calificacion 
+                FROM votos 
+                INNER JOIN usuario ON votos.id_usuario = usuario.email 
+                WHERE votos.id_receta = ?";
+
+// Preparar la consulta
+$votos_stmt = $mysqli->prepare($votos_query);
+
+if (!$votos_stmt) {
+    die("Error en la preparación de la consulta: " . $mysqli->error);
+}
+
+// Pasar el ID de la receta como parámetro
+$votos_stmt->bind_param("i", $receta_id);
+
+// Ejecutar la consulta
+$votos_stmt->execute();
+
+// Obtener los resultados
+$votos_result = $votos_stmt->get_result();
+
+// Comprobar si hay resultados
+if ($votos_result->num_rows > 0):
+    while ($voto = $votos_result->fetch_assoc()):
+        echo "<li><strong>" . htmlspecialchars($voto['nombre']) . ":</strong> " 
+             . htmlspecialchars($voto['calificacion']) . " estrellas ⭐</li>";
+    endwhile;
+else:
+    echo "<p>Aún no hay votos de otros usuarios.</p>";
+endif;
+
+// Cerrar la declaración
+$votos_stmt->close();
+
+?>
+
         </div>
         
        
