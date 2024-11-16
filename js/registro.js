@@ -1,5 +1,5 @@
 function validarFormulario() {
-    return validarEmail() && validarContraseña();
+    return validarEmail() && validarContraseña() && validarUsuario();
 }
 
 function validarEmail() {
@@ -21,6 +21,30 @@ function validarContraseña() {
     if (contraseña !== confirmarContraseña) {
         alert('Las contraseñas no coinciden.');
         return false;
+    }
+
+    return true;
+}
+
+function validarUsuario() {
+    var nombreUsuario = document.getElementById('usuario').value.trim();
+
+    const palabrasProhibidas = [
+        "negro", "trolo", "verga", "idiota", "estúpido", "imbécil", "pendejo", "tonto",
+        "estupido", "burro", "inútil", "baboso", "bobo", "zángano", "cretino", "tarado",
+        "desgraciado", "bruto", "animal", "loco", "pervertido", "prostituta", "prosti",
+        "rata", "cucaracha", "ratero", "puto", "puta", "mierda", "caca", "imbecil",
+        "gay", "maricón", "marica", "pito", "chingón", "chingada", "cabron", "cabrona",
+        "zorra", "burra", "estupida", "mamón", "mamona", "huevón", "huevona", "gilipollas",
+        "gil", "careverga", "careculo", "maldito", "concha", "polla", "pedazo", "cabrón",
+        "putilla", "malparido", "gonorrea", "vergon", "basura", "mierdero", "perra"
+    ];
+
+    for (const palabra of palabrasProhibidas) {
+        if (nombreUsuario.toLowerCase().includes(palabra.toLowerCase())) {
+            alert("No puedes usar palabras ofensivas en tu nombre de usuario.");
+            return false; 
+        }
     }
 
     return true;
