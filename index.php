@@ -70,7 +70,6 @@ if (!$result) {
                                 <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
                             </li>';
                         } else {
-                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
                             echo '
                             <li class="nav-item">
                                 <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>

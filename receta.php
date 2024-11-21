@@ -48,8 +48,8 @@ if ($row = $result->fetch_assoc()):
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="pages/categorias.html">Categorías</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/nosotros.html">Acerca de Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/categorias.php">Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a></li>
                         <?php
                         // Iniciar la sesión si no se ha iniciado
                         session_start();
@@ -179,7 +179,6 @@ if ($row = $result->fetch_assoc()):
             <p>(Basado en <?= $row['numero_votos'] ?? 0 ?> votos)</p>
         </div>
         <?php
-        // Consulta SQL corregida
 $votos_query = "SELECT usuario.usuario AS nombre, votos.calificacion 
                 FROM votos 
                 INNER JOIN usuario ON votos.id_usuario = usuario.email 
@@ -192,10 +191,8 @@ if (!$votos_stmt) {
     die("Error en la preparación de la consulta: " . $mysqli->error);
 }
 
-// Pasar el ID de la receta como parámetro
 $votos_stmt->bind_param("i", $receta_id);
 
-// Ejecutar la consulta
 $votos_stmt->execute();
 
 // Obtener los resultados
@@ -211,13 +208,11 @@ else:
     echo "<p>Aún no hay votos de otros usuarios.</p>";
 endif;
 
-// Cerrar la declaración
 $votos_stmt->close();
 
 ?>
 
         </div>
-        
        
     </main>
 

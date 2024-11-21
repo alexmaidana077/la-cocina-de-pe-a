@@ -4,7 +4,6 @@ $username = "root";
 $password = "";
 $dbname = "cocina";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar la conexión
@@ -13,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 // Obtener la categoría desde la URL
-$categoria = $_GET['categoria'] ?? ''; // Usa un valor vacío si no se especifica una categoría
+$categoria = $_GET['categoria'] ?? '';
 
 // Consulta para seleccionar las recetas que coinciden con la categoría
 $sql = "SELECT id, img, nombre, micro, calificacion_promedio, numero_votos FROM recetas WHERE categorias = ?";
@@ -139,7 +138,6 @@ $result = $stmt->get_result();
 </html>
 
 <?php
-// Cerrar la conexión
 $stmt->close();
 $conn->close();
 ?>

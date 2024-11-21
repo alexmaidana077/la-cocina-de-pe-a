@@ -54,10 +54,10 @@ if (!$result){
                             // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
                             echo '
                             <li class="nav-item">
-                                <a class="nav-link" href="paginas php/registro.html">Registrarse</a>
+                                <a class="nav-link" href="../paginas php/registro.html">Registrarse</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
+                                <a class="nav-link" href="../paginas php/login.html">Iniciar Sesión</a>
                             </li>';
                         } else {
                             // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión

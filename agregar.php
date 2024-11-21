@@ -29,8 +29,6 @@ if ($check === false) {
     $uploadOk = 0;
 }
 
-
-
 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
     echo "Solo se permiten archivos JPG, JPEG, PNG y GIF.";
     $uploadOk = 0;
