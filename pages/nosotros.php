@@ -107,7 +107,7 @@ if ($conn->connect_error) {
         </div>
         <!-- matias -->
         <div class="div_nosotros">
-            <img src="../img/nosotros/ozuna.png" alt="" class="foto">
+            <img src="../img/nosotros/yo7.jpg" alt="" class="foto">
             <div class="info_nosotros2">
                 <h1>Matias Puegher</h1>
                 <h5>Sub-Lider</h5>
