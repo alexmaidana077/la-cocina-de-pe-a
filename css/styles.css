@@ -124,61 +124,116 @@
         margin-top: -80px;
     }
 }
-
 /* -----> Configuración del Sector Visualizar de recetas <----- */
-.contenedor_visualizar{
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;
-   margin: auto;
-   width: 80%;
-}
-.card{
-    margin-top: 50px;
-    max-width: 260px;
-}
-.card img{
-    height:270px;
-}
-.card-title{
-    font-size: 38px;
-}
-.card-text{
-    font-size: 20px;
-}
-.btn-primary{
+.contenedor_visualizar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Cambiado para centrar mejor */
+    gap: 20px; /* Espaciado uniforme entre tarjetas */
     margin: auto;
+    width: 80%;
 }
 
+.card {
+    margin-top: 30px;
+    flex: 1 1 260px; /* Hace que las tarjetas sean flexibles */
+    max-width: 260px;
+    border: 1px solid #ddd; /* Opcional, para dar un marco sutil */
+    border-radius: 8px; /* Esquinas redondeadas */
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
 
+.card img {
+    width: 100%; /* Se asegura que ocupe todo el ancho */
+    height: 270px;
+    object-fit: cover; /* Escala la imagen manteniendo proporción */
+}
 
+.card-title {
+    font-size: 1.5rem; /* Escalable */
+    margin: 10px 0;
+    font-weight: bold; /* Aplica negrita */
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin: 5px 10px;
+    text-align: center;
+}
+
+.btn-primary {
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Efecto al pasar el mouse */
+}
+
+/* -----> Responsividad para pantallas más pequeñas <----- */
 @media (max-width: 768px) {
-    .contenedor_visualizar{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: auto;
-        width: 85%;
+    .contenedor_visualizar {
+        width: 90%;
+        gap: 15px; /* Espaciado reducido */
     }
 
-    .card{
+    .card {
+        max-width: 180px; /* Tarjetas más pequeñas */
+        flex: 1 1 180px; /* Permite ajuste más fluido */
         margin-top: 20px;
-        max-width: 150px;
-        max-height: 400px;
     }
-    .card img{
-        height:170px;
+
+    .card img {
+        height: 150px; /* Imagen más compacta */
     }
-    .card-title{
-        font-size: 15px;
+
+    .card-title {
+        font-size: 1rem; /* Texto proporcional */
     }
-    .card-text{
-        font-size: 11.5px;
+
+    .card-text {
+        font-size: 0.9rem;
     }
-    .contenedor_visualizar a{
-        width: 120px auto;
-        height: 30px;
-        font-size: 10px;
+
+    .btn-primary {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* -----> Responsividad adicional para pantallas muy pequeñas <----- */
+@media (max-width: 480px) {
+    .card {
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    .card img {
+        height: 120px;
+    }
+
+    .card-title {
+        font-size: 0.9rem;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+    }
+
+    .btn-primary {
+        font-size: 0.8rem;
+        padding: 5px 10px;
     }
 }
 
@@ -279,6 +334,7 @@ footer p {
 
 .texto .card-text{
     color: white;
+    text-align: left;
 }
 
 .contenedor_receta img {
@@ -288,8 +344,8 @@ footer p {
     object-fit: cover; /* Ajusta la imagen al contenedor sin distorsión */
 }
 
-/* ---------> responsive de la Pagina Recetas <--*/
-/* ---------> pantallas pequeñas <--------------- */
+/* ----------------> responsive de la Pagina Recetas <----------- */
+/* ----------------> pantallas pequeñas <------------------------ */
 @media (max-width: 768px) {
     .contenedor_receta {
         flex-direction:column-reverse; /* Coloca la imagen arriba y el texto abajo */
@@ -306,9 +362,15 @@ footer p {
         width: 300px;
         margin: 5px -60px auto;
     }    
+    .texto .card-text{
+        color: white;
+        text-align: left;
+        margin-left: -60px;
+    }
+    
 }
 
-/* ------->info de ingredientes */
+/* ------------->info de ingredientes */
 /*--------------> div Contendor_Preparacion */
 .Contendor_Preparacion{
     width: 65%;
@@ -334,7 +396,6 @@ footer p {
     gap: 20px; /* Espacio entre cada línea de imagen y texto */
     padding: 20px;
 }
-
 .contenedor_ingredientes li{
     font-size: 20px;
 }
@@ -347,7 +408,6 @@ footer p {
 .overflow-auto{
     padding-bottom: 40px;
     padding-right: 10px;
-
 }
 
 .overflow-auto::-webkit-scrollbar{

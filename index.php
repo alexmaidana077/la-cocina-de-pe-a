@@ -114,39 +114,40 @@ if (!$result) {
             </div>
         </div>
         <h1 class="tit">¡Deléitate con Nuestras Mejores Recetas!</h1>
-        <!-- ------cartas: ------------>
+ <!-- ------cartas: ------------>
 <div class="contenedor_visualizar">
-        <?php while ($row = $result->fetch_assoc()): ?>
-    <div class="card">
-        <?php if (!empty($row['img'])): ?>
-           <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
-        <?php else: ?>
-            <p>No hay imagen disponible</p>
-        <?php endif; ?>
-
-        <div class="card-body">
-            <?php if (!empty($row['nombre'])): ?>
-                <p class="card-title
-                "> <?= htmlspecialchars($row['nombre']) ?></p>
+    <?php while ($row = $result->fetch_assoc()): ?>
+        <div class="card">
+            <?php if (!empty($row['img'])): ?>
+                <img src="<?= htmlspecialchars($row['img']) ?>" class="card-img-top" alt="Imagen de la receta">
             <?php else: ?>
-                <p>No hay nombre disponible</p>
+                <div class="no-img">
+                    <p>No hay imagen disponible</p>
+                </div>
             <?php endif; ?>
-        </div>
 
-        <div class="card-body">
-            <?php if (!empty($row['micro'])): ?>
-                <p class="card-text">Descripción: <?= htmlspecialchars($row['micro']) ?></p>
-            <?php else: ?>
-                <p>No hay descripción disponible</p>
-            <?php endif; ?>
-            <div class="calificacion_promedio">
-                <h3> <?= round($row['calificacion_promedio'], 1) ?> ⭐</h3>
-                <p>(Basado en <?= $row['numero_votos'] ?> votos)</p>
+            <div class="card-body">
+                <?php if (!empty($row['nombre'])): ?>
+                    <h5 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h5>
+                <?php else: ?>
+                    <p>No hay nombre disponible</p>
+                <?php endif; ?>
+
+                <?php if (!empty($row['micro'])): ?>
+                    <p class="card-text">Descripción: <?= htmlspecialchars($row['micro']) ?></p>
+                <?php else: ?>
+                    <p>No hay descripción disponible</p>
+                <?php endif; ?>
+
+                <div class="calificacion_promedio">
+                    <h3><?= round($row['calificacion_promedio'], 1) ?> ⭐</h3>
+                    <p>(Basado en <?= htmlspecialchars($row['numero_votos']) ?> votos)</p>
+                </div>
+                
+                <a href="receta.php?id=<?= htmlspecialchars($row['id']) ?>" class="btn btn-primary">Ver Receta</a>
             </div>
-            <a href="receta.php?id=<?= $row['id'] ?>" class="btn btn-primary">Ver Receta</a>
         </div>
-    </div>
-<?php endwhile; ?>
+    <?php endwhile; ?>
 </div>
 </main>
 
