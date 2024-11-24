@@ -198,11 +198,15 @@ $votos_stmt->execute();
 // Obtener los resultados
 $votos_result = $votos_stmt->get_result();
 
+
+?>
+<div class="clase">
+<?php
 // Comprobar si hay resultados
 if ($votos_result->num_rows > 0):
     while ($voto = $votos_result->fetch_assoc()):
-        echo "<li><strong>" . htmlspecialchars($voto['nombre']) . ":</strong> " 
-             . htmlspecialchars($voto['calificacion']) . " estrellas ⭐</li>";
+        echo "<h4>" . htmlspecialchars($voto['nombre']) ." </h4>";
+        echo "<h3>" .htmlspecialchars($voto['calificacion']) ." </h3>";
     endwhile;
 else:
     echo "<p>Aún no hay votos de otros usuarios.</p>";
@@ -211,9 +215,8 @@ endif;
 $votos_stmt->close();
 
 ?>
-
-        </div>
-       
+</div>
+        </div>  
     </main>
 
     <footer>

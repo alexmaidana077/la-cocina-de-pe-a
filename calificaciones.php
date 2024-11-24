@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['usuario_id'])) {
     echo "<script>window.location.href = 'login.php';</script>";
     exit();
 }
 
-// Conexión a la base de datos
 $servidor = "localhost";
 $usuario = "root";
 $contra = "";
@@ -15,12 +13,10 @@ $DbNombre = "cocina";
 
 $conn = new mysqli($servidor, $usuario, $contra, $DbNombre);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Obtener el email del usuario desde la sesión
 $email = $_SESSION['usuario_id'];
 
 // Consultar datos del usuario
@@ -63,12 +59,6 @@ $result = $stmtVotos->get_result();
 </header>
 
     <main>
-    <div class="profile-container">
-        <img src="img/logos/1 copy.png" alt="Foto de perfil" width="100">
-        <h1><?php echo htmlspecialchars($usuario); ?></h1>
-        <p>Correo electrónico: <?php echo htmlspecialchars($email); ?></p>
-        <button onclick="window.location.href='../paginas php/php/logout.php'">Cerrar Sesión</button>
-    </div>
 
     <h1>Tus Votos</h1>
 
@@ -98,7 +88,7 @@ $result = $stmtVotos->get_result();
 
 
 <footer>
-    
+
 </footer>
 
 
