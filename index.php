@@ -71,11 +71,11 @@ if (!$result) {
                             </li>';
                         } else {
                             echo '
+                            <li clas="nav-item">
+                                <a class="nav-link" href="calificaciones.php">Calificaciones</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
-                            </li>
-                            <li clas="nav-item">
-                                <a class="nav-link" href="perfil.php">Perfil</a>
                             </li>';
                         }
                         ?>

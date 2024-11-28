@@ -38,18 +38,28 @@ if ($row = $result->fetch_assoc()):
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
+<header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
+                <!-- Nombre a la izquierda -->
                 <a class="navbar-brand" href="index.php"><img src="img/logos/10.png" alt="Logo"></a>
+
+                <!-- Botón colapsable en móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!-- Elementos del menú -->
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Botón para cerrar el menú -->
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="pages/categorias.php">Categorías</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/categorias.php">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
+                        </li>
                         <?php
                         // Iniciar la sesión si no se ha iniciado
                         session_start();
@@ -65,8 +75,10 @@ if ($row = $result->fetch_assoc()):
                                 <a class="nav-link" href="paginas php/login.html">Iniciar Sesión</a>
                             </li>';
                         } else {
-                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
                             echo '
+                            <li clas="nav-item">
+                                <a class="nav-link" href="calificaciones.php">Calificaciones</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
                             </li>';
@@ -80,11 +92,23 @@ if ($row = $result->fetch_assoc()):
 
     <main>
         <div class="contenedor_receta">
-            <div class="favorito">
-                <button class="btn-favorito" onclick="toggleFavorito(this, <?= htmlspecialchars($row['id']) ?>)" data-favorito="false">
-                    <i class="icono-favorito">☆</i>
-                </button>
-            </div>
+        <div class="favorito">
+            <?php
+            // Consultar si la receta es favorita para el usuario
+            $favorito_query = "SELECT id FROM favoritos WHERE usuarios_id = ? AND receta_id = ?";
+            $favorito_stmt = $mysqli->prepare($favorito_query);
+            $favorito_stmt->bind_param("si", $_SESSION['usuario_id'], $receta_id);
+            $favorito_stmt->execute();
+            $favorito_result = $favorito_stmt->get_result();
+            $esFavorito = $favorito_result->num_rows > 0;
+            ?>
+            <button class="btn-favorito" 
+                    onclick="toggleFavorito(this, <?= htmlspecialchars($row['id']) ?>)" 
+                    data-favorito="<?= $esFavorito ? 'true' : 'false' ?>">
+                <i class="icono-favorito"><?= $esFavorito ? '★' : '☆' ?></i>
+            </button>
+        </div>
+
             <div class="texto" id="titulo">
                 <h1 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h1>
                 <p class="card-text"><strong>Descripción: </strong><?= htmlspecialchars($row['micro']) ?></p>

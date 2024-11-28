@@ -802,3 +802,39 @@ input[type="submit"]:hover {
     width: 330px;
     border-radius: 8px;
 }
+
+.fav{
+    margin-top: 150px;
+    padding: 10px;
+}
+
+.fav h1 {
+    text-align: center;
+}
+
+.titulo h2{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btns-fav{
+    margin: 20px auto;
+    width:20%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns-fav button{
+    width: 100px;
+}
+
+.btns-fav button i{
+    width: 10px;
+}
+
+.fav .contenedor_visualizar {
+    background-color: #0c3258a9;
+    padding: 10px;
+    border-radius: 30px;
+}

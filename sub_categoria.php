@@ -40,26 +40,35 @@ $result = $stmt->get_result();
 </head>
 <body>
 
-    <header>
+<header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
+                <!-- Nombre a la izquierda -->
                 <a class="navbar-brand" href="index.php"><img src="img/logos/10.png" alt="Logo"></a>
+
+                <!-- Botón colapsable en móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Elementos del menú -->
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Botón para cerrar el menú -->
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="pages/categorias.php">Categorías</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
-                      </li>
-                      <?php
+                            <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
+                        </li>
+                        <?php
+                        // Iniciar la sesión si no se ha iniciado
                         session_start();
+                        
+                        // Verificar si el usuario ha iniciado sesión
                         if (!isset($_SESSION['usuario_id'])) {
+                            // Si no ha iniciado sesión, mostrar los botones de registro e inicio de sesión
                             echo '
                             <li class="nav-item">
                                 <a class="nav-link" href="paginas php/registro.html">Registrarse</a>
@@ -69,6 +78,9 @@ $result = $stmt->get_result();
                             </li>';
                         } else {
                             echo '
+                            <li clas="nav-item">
+                                <a class="nav-link" href="calificaciones.php">Calificaciones</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="paginas php/php/logout.php">Cerrar Sesión</a>
                             </li>';

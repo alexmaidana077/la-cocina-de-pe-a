@@ -23,11 +23,12 @@ if ($conn->connect_error) {
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <header>
+<header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <!-- Nombre a la izquierda -->
                 <a class="navbar-brand" href="../index.php"><img src="../img/logos/10.png" alt="Logo"></a>
+
                 <!-- Botón colapsable en móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,7 +40,10 @@ if ($conn->connect_error) {
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="categorias.php">Categorías</a>
+                            <a class="nav-link" href="pages/categorias.php">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
                         </li>
                         <?php
                         // Iniciar la sesión si no se ha iniciado
@@ -56,8 +60,10 @@ if ($conn->connect_error) {
                                 <a class="nav-link" href="../paginas php/login.html">Iniciar Sesión</a>
                             </li>';
                         } else {
-                            // Si el usuario ha iniciado sesión, mostrar el botón para cerrar sesión
                             echo '
+                            <li clas="nav-item">
+                                <a class="nav-link" href="../calificaciones.php">Calificaciones</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../paginas php/php/logout.php">Cerrar Sesión</a>
                             </li>';
