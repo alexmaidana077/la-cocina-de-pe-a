@@ -40,10 +40,10 @@ if ($conn->connect_error) {
                     <span class="close-btn" onclick="document.getElementById('navbarNav').classList.remove('show')">&times;</span>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/categorias.php">Categorías</a>
+                            <a class="nav-link" href="../pages/categorias.php">Categorías</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/nosotros.php">Acerca de Nosotros</a>
+                            <a class="nav-link" href="../pages/nosotros.php">Acerca de Nosotros</a>
                         </li>
                         <?php
                         // Iniciar la sesión si no se ha iniciado
