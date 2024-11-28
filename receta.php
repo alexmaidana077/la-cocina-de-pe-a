@@ -184,43 +184,51 @@ if ($row = $result->fetch_assoc()):
             <p>(Basado en <?= $row['numero_votos'] ?? 0 ?> votos)</p>
         </div>
         <?php
-$votos_query = "SELECT usuario.usuario AS nombre, votos.calificacion 
-                FROM votos 
-                INNER JOIN usuario ON votos.id_usuario = usuario.email 
-                WHERE votos.id_receta = ?";
+            $votos_query = "SELECT usuario.usuario AS nombre, votos.calificacion 
+                            FROM votos 
+                            INNER JOIN usuario ON votos.id_usuario = usuario.email 
+                            WHERE votos.id_receta = ?";
 
-// Preparar la consulta
-$votos_stmt = $mysqli->prepare($votos_query);
+            // Preparar la consulta
+            $votos_stmt = $mysqli->prepare($votos_query);
 
-if (!$votos_stmt) {
-    die("Error en la preparación de la consulta: " . $mysqli->error);
-}
+            if (!$votos_stmt) {
+                die("Error en la preparación de la consulta: " . $mysqli->error);
+            }
 
-$votos_stmt->bind_param("i", $receta_id);
+            $votos_stmt->bind_param("i", $receta_id);
 
-$votos_stmt->execute();
+            $votos_stmt->execute();
 
-// Obtener los resultados
-$votos_result = $votos_stmt->get_result();
+            // Obtener los resultados
+            $votos_result = $votos_stmt->get_result();
 
+        ?>
+            <div class="clase">
+                <?php
+                    // Comprobar si hay resultados
+                    if ($votos_result->num_rows > 0):
+                        while ($voto = $votos_result->fetch_assoc()):
+                            echo '<div class="voto">'; // Contenedor con clase "voto"
+                            echo '<div class="estrella">';
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f1c40f" width="24px" height="24px">
+                                    <path d="M12 .587l3.668 7.429 8.332 1.151-6.064 5.728 1.504 8.105L12 18.771l-7.44 4.229 1.504-8.105-6.064-5.728 8.332-1.151z"/>
+                                </svg>';
+                            echo htmlspecialchars($voto['calificacion']); // Calificación dentro del círculo
+                            echo '</div>';
+                            echo '<div class="usuario">';
+                            echo htmlspecialchars($voto['nombre']); // Nombre del usuario
+                            echo '</div>';
+                            echo '</div>'; // Cierre del contenedor
+                        endwhile;
+                    else:
+                        echo "<p>Aún no hay votos de otros usuarios.</p>";
+                    endif;
 
-?>
-<div class="clase">
-<?php
-// Comprobar si hay resultados
-if ($votos_result->num_rows > 0):
-    while ($voto = $votos_result->fetch_assoc()):
-        echo "<h4>" . htmlspecialchars($voto['nombre']) ." </h4>";
-        echo "<h3>" .htmlspecialchars($voto['calificacion']) ." </h3>";
-    endwhile;
-else:
-    echo "<p>Aún no hay votos de otros usuarios.</p>";
-endif;
+                    $votos_stmt->close();
 
-$votos_stmt->close();
-
-?>
-</div>
+                ?>
+            </div>
         </div>  
     </main>
 
