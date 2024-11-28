@@ -80,6 +80,11 @@ if ($row = $result->fetch_assoc()):
 
     <main>
         <div class="contenedor_receta">
+            <div class="favorito">
+                <button class="btn-favorito" onclick="toggleFavorito(this, <?= htmlspecialchars($row['id']) ?>)" data-favorito="false">
+                    <i class="icono-favorito">☆</i>
+                </button>
+            </div>
             <div class="texto" id="titulo">
                 <h1 class="card-title"><?= htmlspecialchars($row['nombre']) ?></h1>
                 <p class="card-text"><strong>Descripción: </strong><?= htmlspecialchars($row['micro']) ?></p>
@@ -231,6 +236,7 @@ $votos_stmt->close();
         </div>
     </footer>
     <script src="js/lector.js"></script>
+    <script src="js/favorito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
